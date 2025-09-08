@@ -16,14 +16,14 @@ https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-
 
 ✅ [Get Started with Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
 
-[_] [Purpose of Terraform State documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/state/purpose)
-[_] [Terraform Settings documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/settings)
-[_] [Manage Terraform Versions tutorial](https://developer.hashicorp.com/terraform/tutorials/configuration-language/versions)
-[_] [Providers Summary documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/providers)
-[_] [How Terraform Works with Plugins documentation](https://developer.hashicorp.com/terraform/plugin/how-terraform-works)
-[_] [Provider Configuration documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/providers/configuration)
-[_] [Lock and Upgrade Provider Versions tutorial](https://developer.hashicorp.com/terraform/tutorials/configuration-language/provider-versioning)
-[_] [Dependency Lock File documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/files/dependency-lock)
+✅ [Purpose of Terraform State documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/state/purpose)
+✅ [Terraform Settings documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/settings)
+✅ [Manage Terraform Versions tutorial](https://developer.hashicorp.com/terraform/tutorials/configuration-language/versions)
+✅ [Providers Summary documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/providers)
+✅ [How Terraform Works with Plugins documentation](https://developer.hashicorp.com/terraform/plugin/how-terraform-works)
+✅ [Provider Configuration documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/providers/configuration)
+✅ [Lock and Upgrade Provider Versions tutorial](https://developer.hashicorp.com/terraform/tutorials/configuration-language/provider-versioning)
+✅ [Dependency Lock File documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/files/dependency-lock)
 
 Exam Content List
 https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-review-003
