@@ -1,0 +1,41 @@
+**Question 1**
+
+Which of the following is not one of the log levels in Terraform logging?
+
+A) TRACE  
+B) DEBUG  
+C) ERROR  
+D) CRITICAL  
+E) WARN
+
+---
+
+**Question 2**
+
+`terraform force-unlock LOCK_ID` is used to manually remove the lock on the Terraform state. True or False?
+
+A) True  
+B) False
+
+---
+
+**Question 3**
+
+Which environment variable is used to enable Terraform logging?
+
+A) TF_LOGGING  
+B) TF_LOG  
+C) TF_LOG_PATH  
+D) TF_LOG_ENABLE
+
+---
+
+**Question 4**
+
+Which of the following is true with regard to the terraform validate command?
+
+A) It validates the syntax of Terraform configuration files in a directory.  
+B) It does not access any remote services, such as remote state, provider APIs, and so on.  
+C) It fixes syntax issues in the code.  
+D) It runs terraform apply with --dry-run flag.  
+E) Both A and B.

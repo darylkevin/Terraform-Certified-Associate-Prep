@@ -1,0 +1,7 @@
+Dashboard
+Chapter 3
+Basics of Terraform and Core Workflow
+Summary
+In this chapter, you have learned about the basics of the Terraform language and the CLI-based workflow and when to apply them. The different block types, configuration settings, and parameters such as input variables and outputs were discussed. You also saw the steps involved in the Terraform core workflow. 
+
+The next chapter will cover Terraform commands in detail, along with the options and the scenarios where they can be used. 

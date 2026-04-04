@@ -1,0 +1,28 @@
+**Question 1**
+
+Marking the sensitive attribute of any output value will hide the value from getting displayed in the console, and the state file will record the output value as part of the plan and apply operations. True or false?
+
+A) True  
+B) False
+
+---
+
+**Question 2**
+
+Which of the following block types can be used to generate nested blocks that can be required within the resource definitions?
+
+A) check {}  
+B) dynamic {}  
+C) lifecycle {}  
+D) required_providers {}
+
+---
+
+**Question 3**
+
+Which of the following is not a valid provisioner in Terraform?
+
+A) A file provisioner  
+B) A local-exec provisioner  
+C) A remote-exec provisioner  
+D) A cloud provisioner

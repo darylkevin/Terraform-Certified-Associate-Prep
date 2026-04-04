@@ -1,0 +1,15 @@
+**Question 1**
+
+Option B is correct because marking the variable as sensitive will hide the output value in the console, but it will still store/record the actual value in the state file in plain text fashion.
+
+---
+
+**Question 2**
+
+Option B is correct because the dynamic {} block allows you to create nested blocks instead of a value. Option A is incorrect because the check {} block is used to validate the overall configurations after the plan or apply operations. Option C is incorrect because the lifecycle {} block is used to configure the preconditions and postconditions for a resource. Option D is incorrect because the required_providers {} block is used inside the terraform {} block to declare the required providers.
+
+---
+
+**Question 3**
+
+Option D is correct because there is no provisioner called a cloud provisioner supported by Terraform currently. Option A is incorrect because Terraform supports the file provisioner to create new files during the Terraform execution on the local machine. The local-exec and remote-exec provisioners are used to execute commands on the local machine running Terraform and the resource created remotely by Terraform, respectively. Hence, options B and C are also incorrect.

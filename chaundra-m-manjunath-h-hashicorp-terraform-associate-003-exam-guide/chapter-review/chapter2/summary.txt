@@ -1,0 +1,10 @@
+Dashboard
+Chapter 2
+Why Do We Need Terraform?
+Summary
+In this chapter, you learned about the challenges of the manual provisioning of infrastructure, what IaC is, and what its advantages are. You also reviewed the importance of Terraform in the IaC landscape and examined what differentiates it from other tools on the market. This information will help you understand the big picture of infrastructure automation and the tools available on the market to solve the problems associated with it. This understanding will help you have a meaningful technical conversation with others about infrastructure automation. 
+
+There was a short discussion about the change of license that has stripped the term “open source” from the Terraform feature list.  
+
+Now that you understand why Terraform is required, you are ready to explore the basics of Terraform and its workflow in Chapter 3, Basics of Terraform and Core Workflow.
+

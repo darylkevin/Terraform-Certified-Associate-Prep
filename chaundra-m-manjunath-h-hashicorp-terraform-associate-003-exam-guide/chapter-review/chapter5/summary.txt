@@ -1,0 +1,10 @@
+Dashboard
+Chapter 5
+Terraform Modules
+Summary
+In this chapter, you learned about Terraform modules. Since there are multiple types of modules, it can be difficult to understand them without understanding the basics.  
+
+You started with a problem statement that the modules solve and then moved on to different ways of using modules.  
+
+With this understanding, you will be able to decide whether you should use a module or go for a one-time implementation via a resource block, create a module yourself, or use a public one, verify whether a public module is trustworthy to use, and so on. 
+

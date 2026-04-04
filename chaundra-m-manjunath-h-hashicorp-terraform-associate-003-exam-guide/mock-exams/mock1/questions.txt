@@ -1,0 +1,553 @@
+# MOCK1 - Questions
+
+### Question 1
+
+Which of the following tools is not an infrastructure-as-code (IaC) tool and is more often used for configuration management?
+
+- A. Pulumi
+- B. AWS CloudFormation
+- C. Ansible
+- D. HashiCorp Terraform
+
+---
+
+### Question 2
+
+The core Terraform workflow can support multi-cloud deployments with the collection of supported providers. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 3
+
+Consider the following code. You want to use the alternate provider configuration with the region set to us-west-1  for s3 bucket creation. Which of the following provider arguments must be used for it?
+
+- A. provider = east
+- B. region = us-west-1
+- C. provider = west
+- D. provider = aws.west
+
+---
+
+### Question 4
+
+Consider the following terraform {} block and select which of the following versions of Terraform will be able to run the configuration scripts with this setup (select THREE):
+
+- A. 1.4.0
+- B. 1.5.7
+- C. 1.5.0
+- D. 1.5.11
+
+---
+
+### Question 5
+
+The ____________ Terraform providers are owned and maintained by HashiCorp and hosted in the hashicorp  namespace.
+
+- A. custom
+- B. community
+- C. official
+- D. third-party
+
+---
+
+### Question 6
+
+Which of the following options can be used to ignore the versions recorded in the dependency lock file and proceed with downloading the latest provider versions as per the version constraints?
+
+- A. -ignore-remote-version
+- B. -replace-providers
+- C. -upgrade
+- D. -force-copy
+- E. -reconfigure
+
+---
+
+### Question 7
+
+At present, Terraform uses the dependency lock file to track only provider dependencies and it will always select the newest version of remote modules as per the specified version constraints. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 8
+
+The Terraform Registry is hosted at ___________________ and it has a collection of the publicly available Terraform providers for major cloud service providers.
+
+- A. https://providers.terraform.io
+- B. https://modules.terraform.io
+- C. https://registry.terraform.io
+- D. https://terraform.io/registry
+
+---
+
+### Question 9
+
+Consider the following resource {} block. There is already an EC2 instance running for the same configuration and the instance ID is i-12376789 . Which of the following terraform import statements will ensure that the resource is successfully imported into the state file?
+
+- A. terraform import aws_instance.dev_server i-123767890
+- B. terraform import i-12376789 aws_instance.dev_server
+- C. terraform import 'aws_instance.dev_server[0]' i-12376789
+- D. terraform import module.aws_instance.dev_server i-12376789
+
+---
+
+### Question 10
+
+Which of the following statements are not true about the terraform import command?  (Select TWO)
+
+- A. The terraform import command can import one resource at a time only.
+- B. The terraform import command can import multiple resources at a time.
+- C. terraform import cannot handle importing a single instance of resources  with the  count or for_each meta-arguments.
+- D. The terraform import command is used to import the existing infrastructure into the Terraform state file.
+
+---
+
+### Question 11
+
+Which of the following commands is used to move existing resources to track them with a new resource address?
+
+- A. terraform state mv
+- B. terraform state rm
+- C. terraform state cp
+- D. terraform state push
+- E. terraform state pull
+
+---
+
+### Question 12
+
+Which of the following commands will sync the terraform state file to match the remote objects already provisioned? (Select TWO.)
+
+- A. terraform state pull
+- B. terraform apply -refresh-only
+- C. terraform state push
+- D. terraform state rm
+- E. terraform refresh
+
+---
+
+### Question 13
+
+Which of the following settings will provide the maximum verbosity of the logs while debugging?
+
+- A. TF_LOG=DEBUG
+- B. TF_LOG=WARN
+- C. TF_LOG=ERROR
+- D. TF_LOG=INFO
+- E. TF_LOG=TRACE
+
+---
+
+### Question 14
+
+The module installer in Terraform supports which of the following sources? (Select THREE.)
+
+- A. Bitbucket
+- B. HTTP URL
+- C. Docker registry
+- D. S3 bucket
+- E. AzureRM
+
+---
+
+### Question 15
+
+The resource attributes from the child module cannot be accessed from the calling module directly and it is possible only if the child module exports them with the help of output values. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 16
+
+You and your colleague worked on the same set of configuration scripts for your project and initially, there was no backend {} block  configured, but the resources were already created. Now, the changes are complete, and you have decided to configure a remote s3 backend. You do not want to destroy and recreate the resources and just want to move the state file to the remote backend directly. Which of the following options should be used with the terraform init command to perform this action?
+
+- A. move-state
+- B. force-copy
+- C. migrate-state
+- D. reconfigure
+
+---
+
+### Question 17
+
+To limit the number of concurrent operations performed by Terraform for provisioning the resources, the -parallelism flag can be used in which of the following commands? (Select THREE.)
+
+- A. terraform init
+- B. terraform plan
+- C. terraform apply
+- D. terraform import
+- E. terraform destroy
+
+---
+
+### Question 18
+
+Terraform will create or destroy the resources in the same order in which they are declared in the configuration files. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 19
+
+When you work with Terraform CLI workspaces, the Terraform state file, terraform.tfstate, for each workspace will be stored in which subdirectory inside root ?
+
+- A. /terraform.tfstate
+- B. .terraform//terraform.tfstate
+- C. workspaces//terraform.tfstate
+- D. terraform.tfstate.d//terraform.tfstate
+
+---
+
+### Question 20
+
+Which of the following commands will let the user know of the workspace name that is currently in use?  (Select TWO)
+
+- A. terraform workspace show
+- B. terraform workspace list
+- C. terraform workspace select
+- D. terraform workspace display
+- E. terraform workspace name
+
+---
+
+### Question 21
+
+With the terraform apply command, it is possible to target a particular resource rather than applying the command for the entire configuration scripts. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 22
+
+Which of the following commands is used to remove the lock on the state  file?
+
+- A. terraform plan -state-lock=false
+- B. terraform state unlock
+- C. terraform force-unlock
+- D. terraform apply -state-unlock=true
+
+---
+
+### Question 23
+
+The terraform {} block cannot contain both the cloud {} block and the backend {} block at the same time. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 24
+
+Which of the following is not a valid backend supported by Terraform?
+
+- A. Kubernetes
+- B. Docker
+- C. COS
+- D. AzureRM
+- E. S3
+
+---
+
+### Question 25
+
+Which of the following is not a valid subcommand of the terraform state command?
+
+- A. terraform state list
+- B. terraform state mv
+- C. terraform state pull
+- D. terraform state select
+
+---
+
+### Question 26
+
+Consider the following expression and fill in the missing line in the names variable declaration:
+
+- A. type = list(string)
+- B. type = list(object)
+- C. type = list(object({ string = name }))
+- D. type = list(object({ name = string }))
+
+---
+
+### Question 27
+
+See the following code block:
+
+- A. -1
+- B. 0
+- C. 1
+- D. Syntax error
+
+---
+
+### Question 28
+
+The output values derived from the input variables marked as sensitive will also be considered sensitive but the value will still be displayed in the terminal screen during plan and apply operations since it is an output value.
+
+- A. True
+- B. False
+
+---
+
+### Question 29
+
+Which of the following is a valid value for the variable declared with the collection type as list (string) ?
+
+- A. ["Adam", 15, true]
+- B. ["Adam", age = 15, "true"]
+- C. [{"Adam", "15", "true"}]
+- D. [name = "Adam", "15", "true"]
+
+---
+
+### Question 30
+
+Consider the literal expression and pick the valid type for this expression (select TWO): ["WebServer", "DatabaseServer"]
+
+- A. tuple([string, string])
+- B. list(string)
+- C. map(string)
+- D. string
+- E. list(tuple)
+
+---
+
+### Question 31
+
+Which of the following is not a valid argument for the lifecycle {} nested block within the resource block?
+
+- A. create_before_destroy
+- B. prevent_destroy
+- C. ignore_changes
+- D. depends_on
+- E. replace_triggered_by
+
+---
+
+### Question 32
+
+Which of the following types in Terraform are termed collection types? (Select THREE.)
+
+- A. object
+- B. list
+- C. set
+- D. map
+- E. tuple
+
+---
+
+### Question 33
+
+The check {} block blocks Terraform from executing the current operation if the validation fails. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 34
+
+Which of the following meta-arguments is not applicable for data {} and module {} blocks, but is used in resource {} blocks?
+
+- A. depends_on
+- B. for_each
+- C. count
+- D. lifecycle
+
+---
+
+### Question 35
+
+With preconditions and postconditions, Terraform expects you to code the condition argument mandatorily, while the error_message argument is optional. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 36
+
+Consider the following main.tf  file:
+
+- A. default_tags
+- B. locals.default_tags
+- C. local.default_tags
+- D. local.default_tags.values
+
+---
+
+### Question 37
+
+Consider the following module block and assume it creates a couple of resources, aws_iam_user.user1 and aws_sqs_queue.queue1:
+
+- A. testmodule["b"].aws_sqs_queue.queue1
+- B. module.testmodule["b"].aws_sqs_queue.queue1
+- C. module.testmodule.aws_sqs_queue.queue1["b"]
+- D. testmodule["b"]. aws_sqs_queue.queue1[2]
+
+---
+
+### Question 38
+
+Consider the following resource block and select the right resource address to refer to the created resources (select TWO):
+
+- A. aws_s3_bucket.testforeach["prod"]
+- B. aws_s3_bucket.testforeach["env_1"]
+- C. aws_s3_bucket.testforeach["dev"]
+- D. aws_s3_bucket.testforeach["env_2"]
+
+---
+
+### Question 39
+
+Consider the following output value and select the right expression that will produce this output:
+"abc+123+xyz"
+
+- A. "abc" + "123" + "xyz"
+- B. concat("abc", "123", "xyz")
+- C. join("+", ["abc", "123", "xyz"])
+- D. join("+", "abc", "123", "xyz")
+
+---
+
+### Question 40
+
+Consider this expression: 
+
+1+ 2 * 2 * 3 * 3 
+
+What will be the output of the preceding expression in Terraform?
+
+- A. 37
+- B. 13
+- C. 45
+- D. 36
+
+---
+
+### Question 41
+
+QUESTION:
+Consider the following:
+"100" == 100 ? "same" : "not same"
+What will be the return  type of the output value from this expression?
+
+- A. string
+- B. number
+- C. “not same”
+- D. bool
+
+---
+
+### Question 42
+
+The _____________ function can be used to generate universally unique identifiers (UUIDs) in version 4 using Terraform
+
+- A. uuid_v4()
+- B. random_uuid()
+- C. generate_uuid()
+- D. uuid()
+
+---
+
+### Question 43
+
+Which of the following blocks in Terraform is used to create repeatable nested blocks?
+
+- A. nested {}
+- B. check {}
+- C. provisioner {}
+- D. dynamic {}
+
+---
+
+### Question 44
+
+Which of the following code blocks will allow the terraform apply operation to go through even if the specified condition fails?
+
+- A. The dynamic {} block
+- B. The precondition {} block
+- C. The postcondition {} block
+- D. The check {} block
+- E. The provisioner {} block
+
+---
+
+### Question 45
+
+Which of the following functions will encode the given value using JSON syntax?
+
+- A. jsonencode()
+- B. jsondecode()
+- C. base64encode()
+- D. tostring()
+
+---
+
+### Question 46
+
+The depends_on meta-argument can also be used with the data sources inside the data {} block and has the same dependency resolution behavior as regular resource definitions. True or false?
+
+- A. True
+- B. False
+
+---
+
+### Question 47
+
+The _________________ meta-argument helps us handle the hidden dependencies that Terraform cannot automatically infer and expects the user to manually add the dependencies with other resources or modules explicitly.
+
+- A. providers
+- B. depends_on
+- C. count
+- D. for_each
+
+---
+
+### Question 48
+
+_______________ is available as a hosted service and it manages Terraform and runs in a consistent and reliable environment with additional features such as audit logging and drift detection.
+
+- A. Terraform Enterprise
+- B. Terraform CLI
+- C. Terraform Cloud
+- D. Terraform Core
+
+---
+
+### Question 49
+
+The __________ language can be used to write policies to enforce rules on the Terraform Cloud execution runs.
+
+- A. HCL
+- B. Sentinel
+- C. JSON
+- D. YAML
+
+---
+
+### Question 50
+
+Which of the following features are applicable to the Terraform Enterprise edition only? (Select TWO.)
+
+- A. Single sign-on (SSO)
+- B. Log forwarding
+- C. Self-hosted installation
+- D. Support for ServiceNow integrations
+- E. Drift detection
+
+---
+

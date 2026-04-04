@@ -1,0 +1,5 @@
+Dashboard
+Chapter 10
+Miscellaneous Topics
+Summary
+In this chapter, the focus was more on topics that are not vast but are very important to understand when you want to build and deploy complex applications using Terraform. Provisioners are very helpful if you know how to use them effectively and handle exceptions that can occur. The usage of sensitive data in Terraform needs to be planned well ahead of the project schedule and external secret engines should be utilized whenever possible. 

@@ -1,0 +1,15 @@
+**Question 1**
+
+Option D is correct because options A, B, and C are all true. Option D covers all the features of Terraform. Terraform is cloud-agnostic, declarative, and idempotent. Please refer to Features of Terraform in this chapter.
+
+---
+
+**Question 2**
+
+Option C is correct because Terraform does not provide high availability just by using it. High availability must be considered at the architecting level and then implemented. Options A, B, and D are all benefits of IaC, but the question asks you to pick the option that is not a benefit of IaC.
+
+---
+
+**Question 3**
+
+Option E is correct because Sentinel is not an IaC tool/service, but a policy-as-code framework used by Terraform to enforce rules on Terraform runs. Option A is incorrect because HashiCorp Terraform is the most commonly used IaC tool. Option B is incorrect because AWS CloudFormation is a service from AWS for IaC in the AWS cloud. Option C is incorrect because Microsoft Azure Resource Manager is a service by Microsoft for IaC in Azure. Option D is incorrect because GCP Cloud Deployment Manager is a service by Google for IaC in GCP.

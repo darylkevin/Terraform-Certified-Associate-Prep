@@ -1,0 +1,33 @@
+**Question 1**
+
+Consider the following expression and select the option that contains the expected output:
+
+```hcl
+"true" == true ? "true" : "false"
+```
+
+A) "true"  
+B) Invalid expression  
+C) "false"
+
+---
+
+**Question 2**
+
+Imagine that there is a Terraform module, appmodule, and it has created two resources, app1 and app2, with the count set to 4. How can we refer to the third instance of the app2 resource as per the resource addressing conventions in Terraform?
+
+A) appmodule.app2[3]  
+B) module.appmodule.app1[3]  
+C) module.appmodule.app2[2]  
+D) module.appmodule[3].app2
+
+---
+
+**Question 3**
+
+Which of the following statements is FALSE with regard to the limitations of using a backend block in configuration scripts?
+
+A) Terraform stores the backend configuration settings inside .terraform/terraform.tfstate for the current working directory.  
+B) Any Terraform configuration can contain only one backend {} block.  
+C) The backend {} block cannot contain or refer to named values such as input variables, locals, or data source attributes.  
+D) The cloud {} and backend {} blocks can be used at the same time.

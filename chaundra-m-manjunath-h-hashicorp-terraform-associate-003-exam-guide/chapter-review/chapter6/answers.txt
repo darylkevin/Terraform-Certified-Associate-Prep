@@ -1,0 +1,15 @@
+**Question 1**
+
+Option C is correct because the preceding conditional expression will return "false" since the operands are of different types (string versus bool).
+
+---
+
+**Question 2**
+
+Option C is correct because it has the right resource address for the third instance of the app2 resource. Option A is incorrect because any resource created inside a module should be prefixed by the keyword module followed by a period. Option B is incorrect because it refers to the third instance of app1 and not app2. Option D is incorrect because the app2 instance is not referred to correctly.
+
+---
+
+**Question 3**
+
+Option D is correct because the cloud {} block is used to configure HCP Terraform (previously known as Terraform Cloud) and, if that is configured, the backend {} block cannot be used at the same time since the backend will be managed by HCP Terraform.

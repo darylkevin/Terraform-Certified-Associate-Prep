@@ -1,0 +1,8 @@
+Dashboard
+Chapter 4
+Terraform Commands and State Management
+Summary
+In this chapter, you read about the core Terraform workflow commands. This was followed by explanations of special-purpose commands such as console, graph, and import, used as and when the need arises. The terraform state command was then discussed in detail with the subcommands. You also looked at how each command helps the developer interact with and manage the state file beyond infrastructure provisioning. 
+
+Now, you can proceed with the next chapter, on how to use the commands with Terraform CLI with full confidence. This will help in increasing productivity and the seamless transition to advanced concepts such as Terraform modules, Terraform Cloud, and so on. 
+

@@ -1,0 +1,7 @@
+Dashboard
+Chapter 6
+Terraform Backends and Resource Management
+Summary
+In this chapter, you learned about the backend configuration syntax, and then you followed this up by reading about valid backends supported by Terraform and how to configure them with the limitations. Resource addressing and the concept of implicit and explicit dependency were also discussed. Finally, different types of expressions such as splat expressions and for expressions were looked at, with examples. 
+
+A backend configuration for any production-grade configuration script will help teams store the state file securely and interact with it in multiple executions, without any conflict. This is where Terraform stands out from other tools. 

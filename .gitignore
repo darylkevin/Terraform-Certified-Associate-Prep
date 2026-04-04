@@ -1,0 +1,14 @@
+chaundra-m-manjunath-h-hashicorp-terraform-associate-003-exam-guide/*.pdf
+chaundra-m-manjunath-h-hashicorp-terraform-associate-003-exam-guide/*.epub
+
+.DS_Store
+.venv/
+refs/
+
+.terraform/
+.terraform.lock.hcl
+.terraform.tfstate
+.terraform.tfstate.backup
+.terraform.tfvars
+.terraform.tfvars.json
+.terraformrc

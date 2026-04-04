@@ -1,0 +1,10 @@
+Dashboard
+Chapter 7
+Debugging and Troubleshooting Terraform
+Summary
+In this chapter, you learned about the key areas in which Terraform issues arise and how to handle those issues. The areas or the issues highlighted here are in no way exhaustive but should give you a good understanding of the frequent issues in Terraform.  
+
+You also learned how to enable logging, which is the most important step in troubleshooting issues or raising a bug report with the providers or with HashiCorp.  
+
+In the end, you saw some tips from real-world Terraform management. In Chapter 8, Terraform Functions, you will read about the use of Terraform functions that the Terraform language supports. 
+

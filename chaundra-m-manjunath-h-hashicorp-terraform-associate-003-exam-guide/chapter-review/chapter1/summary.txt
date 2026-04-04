@@ -1,0 +1,7 @@
+Dashboard
+Chapter 1
+Introduction to Infrastructure as Code (IaC) and Concepts
+Summary
+In this chapter, the IaC concept was discussed in detail, and some popular IaC tools were covered to help you understand the differences between them. You then read through various use cases demonstrating the implementation of the IaC approach, and these were followed up with the benefits of using them. 
+
+After having done the practical exercises using CloudFormation and Terraform tools, you now also have a better idea about the actual working of these tools and how they differ from each other.  

@@ -1,0 +1,42 @@
+**Question 1**
+
+Consider the following expression and select the right output:
+
+```hcl
+range(4, 20, 3)
+```
+
+A) [4, 7, 10, 13, 16, 19]  
+B) [4, 24, 28, 32]  
+C) [4, 20, 4, 20, 4, 20]  
+D) [4, 24, 44, 64]
+
+---
+
+**Question 2**
+
+Consider the following expression and select the right output:
+
+```hcl
+signum(200)
+```
+
+A) 200  
+B) 1  
+C) 2  
+D) Invalid expression/function
+
+---
+
+**Question 3**
+
+Select the correct data type for the output value from the following expression:
+
+```hcl
+split("-", "h-e-l-l-o")
+```
+
+A) string  
+B) list(string)  
+C) bool  
+D) map

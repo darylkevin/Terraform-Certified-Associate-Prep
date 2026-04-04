@@ -1,0 +1,919 @@
+# MOCK2 - Answers
+
+### Question 1
+
+**Correct Answer(s):** B, C, E
+
+**Options:**
+- [ ] A. IaC takes care of High Availability (HA) and Disaster Recovery (DR)
+- [✓] B. It reduces human error
+- [✓] C. It increases operational efficiency
+- [ ] D. You cannot use IaC with Version Control Systems (VCSs)
+- [✓] E. Repeatability
+
+**Explanation:**
+
+Options B, C, and E are correct. HA and DR need to be planned at the solution level. While IaC can help implement HA and DR, it does not inherently manage them. Therefore, option A is incorrect. Option D is incorrect because all editions of Terraform support integration with VCSs.
+
+---
+
+### Question 2
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. TRUE
+- [✓] B. FALSE
+
+**Explanation:**
+
+Option B is correct because Terraform can be used to manage resources both in the cloud and on-premises. Terraform is an IaC tool that lets you build, change, and version cloud and on-premises resources safely and efficiently.
+
+---
+
+### Question 3
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. Terraform configuration works only with HCL format
+- [ ] B. Terraform needs either AWS or Azure to store the state file
+- [✓] C. Terraform is cloud agnostic
+- [ ] D. Functions are not supported in Terraform, unlike in CloudFormation or ARM
+
+**Explanation:**
+
+Option C is correct because it is a feature of Terraform.  Option A is incorrect because Terraform configuration works with HCL and JSON format. Option B is incorrect because Terraform works with many cloud vendors and also with local backends. Option D is incorrect because Terraform supports functions such as MIN, MAX, and split.
+
+---
+
+### Question 4
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. A
+- [✓] B. B
+- [ ] C. C
+- [ ] D. D
+
+**Explanation:**
+
+Option B is correct because all the others have syntax issues. Option A has multiple Terraform blocks and option C has multiple required_providers  blocks that are wrong.  Option D’s statement is incorrect. Terraform allows managing multiple providers in a single configuration file, as shown in Option B.
+
+---
+
+### Question 5
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. TRUE
+- [✓] B. FALSE
+
+**Explanation:**
+
+Option B is correct because HashiCorp recommends that you use provisioners as a last resort and that you use alternatives for common situations.
+
+---
+
+### Question 6
+
+**Correct Answer(s):** B, E
+
+**Options:**
+- [ ] A. File
+- [✓] B. user-data
+- [ ] C. remote-exec
+- [ ] D. local-exec
+- [✓] E. locals
+
+**Explanation:**
+
+Options B and E are correct. user-data and locals are not Terraform provisioners. File, remote-exec, and local-exec are built-in provisioners in Terraform.
+
+---
+
+### Question 7
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. Use multiple terraform  blocks, each of which has a different set of credentials
+- [ ] B. Create another folder and copy the configuration file, configure the AWS credentials for the new region, and create the required resources
+- [✓] C. Use the alias option of the provider block to create two provider configurations and use them to create resources in different regions
+- [ ] D. None of the above
+
+**Explanation:**
+
+Option C is correct because using an alias is the easiest and right way to have multiple provider configurations, where one is used for region 1 and another is used for region.
+
+---
+
+### Question 8
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. You will delete the database server and create the new database server using Terraform
+- [ ] B. You will create a backup of the database server, delete the database server, create a new database server using Terraform, and import the data to the database server
+- [✓] C. You will write the Terraform configuration for the database resource and run the terraform import command for the specific resource to import the database server into Terraform
+- [ ] D. Terraform cannot import existing resources
+
+**Explanation:**
+
+Option C is correct. Option A is incorrect because it talks about deleting the database server. Option B is possible, but involves too many unnecessary steps, and the same thing can be achieved easily with option C.  Option D is incorrect because Terraform can import existing resources.
+
+---
+
+### Question 9
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. terraform state list
+- [✓] B. terraform state show RESOURCE-ADDRESS
+- [ ] C. terraform output RESOURCE-NAME
+- [ ] D. Log in to the console of the platform and get all the attributes of the resource
+
+**Explanation:**
+
+Option B is correct because you can get the list of all resources in the state file by using terraform state list. terraform output will only give the value of the attribute that is defined in the output.tf file. However, terraform state show RESOURCE will give the details of all the attributes of the resource that is stored in the state file.
+
+---
+
+### Question 10
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. Create a new environment variable to store the logs TF_LOG_PATH=/troubleshootlog
+- [ ] B. Create a new environment variable to store the logs TF_LOG_FILE=/troubleshootlog
+- [ ] C. Copy the logs that are displayed on the CLI, paste them into a text editor, and share them with the team
+- [ ] D. Create a new path by using a new environment variable TF_DATA_DIR=~/terraform/newfolder/
+
+**Explanation:**
+
+Option A is correct because TF_LOG_PATH is the right syntax to define the path of the file where the logs have to be stored. Option B is incorrect because there is no environment variable by the name TF_LOG_FILE, and option C is incorrect because copying the logs is not feasible, given the number of logs that are generated (and it is also not recommended). Option D is incorrect because TF_DATA_DIR is not used to specify the path where Terraform logs should be stored.
+
+---
+
+### Question 11
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. DEBUG
+- [ ] B. INFO
+- [ ] C. WARN
+- [✓] D. TRACE
+- [ ] E. ERROR
+
+**Explanation:**
+
+Option D is correct.Here are the debug options in the order of decreasing verbosityTRACEDEBUGINFOWARNERROR
+
+---
+
+### Question 12
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. TRUE
+- [ ] B. FALSE
+
+**Explanation:**
+
+Option A is correct because the terraform get command is used to download and update modules mentioned in the root module.
+
+---
+
+### Question 13
+
+**Correct Answer(s):** A, C
+
+**Options:**
+- [✓] A. terraform init -upgrade
+- [ ] B. terraform init -update
+- [✓] C. terraform get -update
+- [ ] D. terraform get -latest
+- [ ] E. terraform pull -latest
+
+**Explanation:**
+
+Options A and C are correct. Option B is incorrect as there is no argument called -update for terraform init. Option D is incorrect as there is no argument called -latest for terraform get. Option E is incorrect as there is no command called terraform pull.
+
+---
+
+### Question 14
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. count
+- [ ] B. for_each
+- [ ] C. depends_on
+- [✓] D. All of the above
+
+**Explanation:**
+
+Option D is correct. All the options specified are meta-arguments of modules.
+
+---
+
+### Question 15
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. A
+- [ ] B. B
+- [✓] C. C
+- [ ] D. D
+
+**Explanation:**
+
+Option C is correct. You can see that the source refers to a path within the filesystem. Option A is incorrect as it uses the resource block and is not a module. Option B is incorrect as it is a public (and remote) module as you can see the source is the Terraform public registry.
+
+---
+
+### Question 16
+
+**Correct Answer(s):** E
+
+**Options:**
+- [ ] A. Reduces duplication of code
+- [ ] B. Self service
+- [ ] C. Encapsulates configuration
+- [ ] D. Provides consistency
+- [✓] E. All of the above
+
+**Explanation:**
+
+Option E is correct as all the points specified are true for modules.
+
+---
+
+### Question 17
+
+**Correct Answer(s):** A, D, F
+
+**Options:**
+- [✓] A. Root modules can call child modules
+- [ ] B. Child modules can call root modules
+- [ ] C. Child modules can be called only once in the root module
+- [✓] D. Child modules can be called multiple times in the root module
+- [ ] E. Different root modules can be called from the child module
+- [✓] F. Different child modules can be called from the root module
+
+**Explanation:**
+
+Options A, D, and F are correct. Options B and E are wrong because there is only one root module and the child modules cannot call the root module. Option C is wrong because the child module can be called many times from the root module.
+
+---
+
+### Question 18
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. for_each
+- [ ] B. version
+- [ ] C. variables
+- [✓] D. source
+- [ ] E. count
+
+**Explanation:**
+
+Option D is correct as it is the only mandatory argument in the module block. Option A is incorrect as for_each is a meta-argument and is optional. Option B is incorrect as version is also a meta-argument that is recommended, but it is not mandatory. Option C is incorrect as variables is not mandatory either. Option E is incorrect as count is another meta-argument and is optional.
+
+---
+
+### Question 19
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. A
+- [ ] B. B
+- [ ] C. C
+- [✓] D. D
+
+**Explanation:**
+
+Option D is correct because the syntax is right and locks the module to one specific version. Options A and C have required_version, which is not present in the module block. Option B has a pessimistic operator, which says the right-most number of the module can be incremented (5.6.0 can be incremented to 5.6.1 to 5.6.9) and does not lock it to one specific version.
+
+---
+
+### Question 20
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. TRUE
+- [ ] B. FALSE
+
+**Explanation:**
+
+Option A is correct because the terraform graph command produces descriptions of the relationships between objects in a Terraform configuration.
+
+---
+
+### Question 21
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. To evaluate expressions
+- [ ] B. To experiment with in-built functions when the state is empty
+- [ ] C. To test interpolations before using them in configurations
+- [✓] D. All of the above
+
+**Explanation:**
+
+Option D is correct because terraform console is used for all the options.
+
+---
+
+### Question 22
+
+**Correct Answer(s):** A, D, E
+
+**Options:**
+- [✓] A. Write
+- [ ] B. Format
+- [ ] C. Validate
+- [✓] D. Plan
+- [✓] E. Apply
+- [ ] F. Destroy
+
+**Explanation:**
+
+Options A, D, and E are correct because the core Terraform workflow has only three steps: write, plan, and apply. Other options, such as terraform fmt and terraform validate, are also used in the production setup, but they are not the core Terraform workflow.
+
+---
+
+### Question 23
+
+**Correct Answer(s):** B, C, E, F
+
+**Options:**
+- [ ] A. Downloads all the plugins available for Terraform and stores them locally
+- [✓] B. Downloads only those provider plugins that have been defined in the configuration files in the current directory
+- [✓] C. The backend is initialized to store the Terraform state file
+- [ ] D. Stores the terraformtfstate file in the cloud automatically
+- [✓] E. Searches for module blocks in the configuration files and retrieves these modules from the source location
+- [✓] F. Stores the downloaded provider plugins and modules in the terraform/ directory in the current working directory
+
+**Explanation:**
+
+Options B, C, E, and F are correct. Option A is incorrect because it talks about downloading all available plugins, but Terraform only downloads the required plugins based on what is defined in the configuration file. Option D is also incorrect because the terraform.tfstate file does not need to be stored in the cloud. While using the local backend, terraform.tfstate gets stored on the local filesystem.
+
+---
+
+### Question 24
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. Under the .terraform/ folder in the current working directory
+- [ ] B. Cached in the memory for faster access
+- [ ] C. Under the home directory of the user who is executing the commands
+- [ ] D. In a newly created folder named modules in the root directory of the operating system
+
+**Explanation:**
+
+Option A is correct because whether you use terraform init or terraform get to download the modules, they get stored in the .terraform folder of the current working directory.
+
+---
+
+### Question 25
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. TRUE
+- [✓] B. FALSE
+
+**Explanation:**
+
+Option B is correct because though this looks to be true, terraform validate cannot run if the directory where the code is present is not initialized by running terraform init first. terraform init is the first command that should be run after writing a new Terraform configuration or cloning an existing one from version control.
+
+---
+
+### Question 26
+
+**Correct Answer(s):** A, C
+
+**Options:**
+- [✓] A. It validates the configuration files in a directory
+- [ ] B. It accesses the remote state and provider APIs to confirm the code runs successfully
+- [✓] C. It verifies the reusable modules, including the correctness of the attribute names and value types
+- [ ] D. It creates resources specified in the code to validate that they get created without any issues and then deletes them
+
+**Explanation:**
+
+Options A and C are correct because the terraform validate command validates the configuration files in a directory and verifies whether a configuration is syntactically valid and internally consistent. terraform validate does not create any resources, nor does it connect to the provider API, ruling out options D and B.
+
+---
+
+### Question 27
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. terraform plan -skip-checks and terraform apply -skip-checks
+- [ ] B. terraform plan -lock-timeout=20s and terraform apply -lock-timeout=20s
+- [ ] C. terraform plan and terraform apply -auto-approve
+- [✓] D. terraform plan -parallelism=20 and terraform apply -parallelism=20
+
+**Explanation:**
+
+Option D is correct because the parallelism option in plan/apply allows the user to define the number of concurrent operations. The default value is %SOLUTION. Increasing this to 20 helps in reducing the time taken when there are parallel operations.  Option A is incorrect because the -skip-checks option does not exist in Terraform. Options B and C do not suit the given use case.
+
+---
+
+### Question 28
+
+**Correct Answer(s):** A, B, E
+
+**Options:**
+- [✓] A. Scans the configuration of all the files with the .tf extension in the current working directory
+- [✓] B. Scans the configuration of all the files with the .json extension in the current working directory
+- [ ] C. Recurses through the subdirectory to scan the configuration files for .tf files
+- [ ] D. Recurses through the subdirectory to scan the configuration files for .json files
+- [✓] E. Creates a plan and shows what resources will be created
+- [ ] F. Creates a plan and shows what resources will be created, with a prompt asking the user to confirm whether the resources have to be created
+
+**Explanation:**
+
+Options A, B, and E are correct. By default, terraform plan does not recurse through the subdirectory. Hence, options C and D are incorrect. terraform apply prompts the user for confirmation to create the resources and not terraform plan. Hence, option F is also incorrect.
+
+---
+
+### Question 29
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. TRUE
+- [ ] B. FALSE
+
+**Explanation:**
+
+Option A is correct because you will have to initialize before running terraform apply. terraform init downloads the required provider and modules and configures the backend, all of which are required for terraform apply to succeed. The terraform init command initializes a working directory containing Terraform configuration files. This is the first command that should be run after writing a new Terraform configuration or cloning an existing one from version control.
+
+---
+
+### Question 30
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. Creating new infrastructure
+- [ ] B. Updating existing infrastructure
+- [ ] C. Deleting the resources
+- [✓] D. Formatting the content of configuration files
+
+**Explanation:**
+
+Option D is correct as terraform apply does not format configuration files. This is done by the terraform fmt command. All the other options are done by terraform apply.
+
+---
+
+### Question 31
+
+**Correct Answer(s):** A, B
+
+**Options:**
+- [✓] A. Remove the code of all the resources except the database server and run terraform apply.
+- [✓] B. Remove the database server from the state file (terraform state rm RESOURCE-ADDRESS) and run terraform destroy.
+- [ ] C. Take a manual backup of the database server, run terraform destroy, and recreate the DB server along with the data.
+- [ ] D. Delete all the resources manually and retain only the database server.
+
+**Explanation:**
+
+Options A and B are correct. terraform apply creates the resources based on the configuration file but will also delete those resources when the respective code is removed from the configuration file. Removing the code tells Terraform about the new desired state where the resource needs to be deleted. Hence, option A is correct. Option B can also do the job easily. Option C is doable, but requires things beyond Terraform, and is hence incorrect. Option D is incorrect as it talks about doing things manually when the requirement is to do it via Terraform.
+
+---
+
+### Question 32
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. terraform destroy --auto-approve
+- [ ] B. terraform destroy -target=resource.name
+- [✓] C. terraform destroy -target=module.name
+- [ ] D. terraform apply -destroy
+
+**Explanation:**
+
+Option C is correct. Option A is incorrect as it deletes all the resources managed by Terraform. Option B is incorrect as it deletes a single resource but the QUESTION is about the resource created using a module. Option D is the same as option A, and deletes all the resources managed by Terraform.
+
+---
+
+### Question 33
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. Create a document containing rules around spacing and other syntax. Circulate it with the team.
+- [✓] B. Ask the team to run terraform fmt once the code is ready.
+- [ ] C. Ask the team to run terraform apply -format to keep the code consistent.
+- [ ] D. Use some third-party tool to reformat the Terraform code to make sure the code is consistent.
+
+**Explanation:**
+
+Option B is correct as it is the easiest way to do this. Option C is incorrect as there is no argument called -format in terraform apply. Option D is incorrect, but it could be used if there is no option in Terraform. Option A is incorrect because even though it can be done, it is not the easiest way to do it.
+
+---
+
+### Question 34
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. TRUE
+- [✓] B. FALSE
+
+**Explanation:**
+
+Option B is correct as the terraform.tfstate file is the default name given to the state file, but it can be defined as something appropriate (using key argument) while using the remote backend.
+
+---
+
+### Question 35
+
+**Correct Answer(s):** B, C, E
+
+**Options:**
+- [ ] A. All Terraform backends that store the files have state locking by default.
+- [✓] B. When using Terraform Community Edition, you are responsible for maintaining a state file as the source of truth for your cloud infrastructure.
+- [✓] C. HCP Terraform offers secure remote state storage, making it easier to collaborate on infrastructure development.
+- [ ] D. The Terraform state file always uses the remote backend.
+- [✓] E. You can migrate the state file from one backend to another backend by using the terraform init -migrate-state command.
+
+**Explanation:**
+
+Options B, C, and E are correct. Option A is incorrect as locking is not available with all backends, such as a local backend. Option D is incorrect as the state file can also be stored on the local filesystem when you use a local backend. All other options are right about the state file.
+
+---
+
+### Question 36
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. It throws an error saying there is no state file.
+- [ ] B. A new state file is created along with the details of all the previously managed resources.
+- [✓] C. It creates all the resources again.
+- [ ] D. Terraform needs to be reinitialized, upon which it will repopulate the state file.
+
+**Explanation:**
+
+Option C is correct because when you delete the state file, Terraform has nothing to refer to. This effectively makes Terraform unaware of the resources created as there is nothing that refers to the resources or their attributes. Terraform just looks for the state file and if it is not present, it will start on a clean slate and create all the resources again, adding those details to the newly created state file.
+
+---
+
+### Question 37
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. terraform apply -auto-approve
+- [ ] B. terraform init
+- [✓] C. terraform force-unlock LOCK-ID
+- [ ] D. terraform plan -force
+
+**Explanation:**
+
+Option C is correct. You see this error when you are not able to get the lock that is required for you to run any Terraform runs. This happens because a process is using the lock. If you are sure there is no long-running terraform plan or terraform apply active in the environment, you can use option C to remove the lock.
+
+---
+
+### Question 38
+
+**Correct Answer(s):** A, B, D, E
+
+**Options:**
+- [✓] A. terraform apply -var="VARIABLE_NAME=VARIABLE_VALUE".
+- [✓] B. If the variable and value are stored in the dev.tfvars file in the same working directory, run terraform apply -var-file="dev.tfvars".
+- [ ] C. If the variable and value are stored in the dev.tfvars file in the same working directory, run terraform apply -variable-file="dev.tfvars".
+- [✓] D. Update the terraform.tfvars file with the variable name and value. Then run terraform apply.
+- [✓] E. Export TF_VAR_variable_name=variable-value.
+- [ ] F. Export VAR_variable_name=variable-value.
+
+**Explanation:**
+
+Options A, B, D, and E are correct. Options C and F have the wrong syntax. There is a certain precedence in which variable values are picked by Terraform. Terraform loads variables in the following order, with later sources taking precedence over earlier ones: Any -var and -var-file options on the command line in the order they are provided. (This includes variables set by an HCP Terraform workspace.) Any *.auto.tfvars or *.auto.tfvars.json files, processed in alphabetical order by filename. The terraform.tfvars.json file, if present. The terraform.tfvars file, if present. Environment variables.
+
+---
+
+### Question 39
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. ami-123.
+- [✓] B. ami-567.
+- [ ] C. It prompts the user for the ami.
+- [ ] D. None of the above.
+
+**Explanation:**
+
+Option B is correct. Option B is picked based on the variable precedence. Terraform loads variables in the following order, with later sources taking precedence over earlier ones: Any -var and -var- file options on the command line, in the order they are provided. (This includes variables set by an HCP Terraform workspace.) Any *.auto.tfvars or *.auto.tfvars.json files, processed in alphabetical order by filename. The terraform.tfvars.json file, if present. The terraform.tfvars file, if present. Environment variables.
+
+---
+
+### Question 40
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. Input variables
+- [ ] B. Output variables
+- [ ] C. Terraform providers
+- [ ] D. Terraform plugins
+
+**Explanation:**
+
+Option A is correct. It is because of Terraform input variables that you will be able to make configuration files reusable and dynamic as you can pass any value to these variables depending on the requirements. Input variables let you customize aspects of Terraform modules without altering the module's source code.
+
+---
+
+### Question 41
+
+**Correct Answer(s):** E
+
+**Options:**
+- [ ] A. object
+- [ ] B. strings
+- [ ] C. bool
+- [ ] D. tuple
+- [✓] E. locals
+
+**Explanation:**
+
+Option E is correct because except for locals, all others are valid variable types.
+
+---
+
+### Question 42
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. output "instance-x" {value = aws_instance.test_ec2_instances.id.2}
+- [ ] B. output "instance-y" {value = aws_instance.test_ec2_instances[1].id}
+- [✓] C. output "instance-z" {value = aws_instance.test_ec2_instances[2].id}
+- [ ] D. output "instance-m" {value = aws_instance.test_ec2_instances[3].id}
+
+**Explanation:**
+
+Option C is correct. Here, the code uses the count meta-argument to create three EC2 instances named instance-0, instance-1, and instance-2, respectively, which are all part of a single list. You will have to pass the index position in the output command to get the details of the resource you are looking for. Option A's syntax is wrong. Option B gives the ID of instance-1. Option D throws an index error as there is nothing in the fourth index.
+
+---
+
+### Question 43
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. Locals can help secure a value by encrypting it.
+- [✓] B. You can assign an expression to a local that evaluates to a value. This can be used at multiple locations in the code.
+- [ ] C. Locals are supported in HCP Terraform while variables are supported in Terraform Community Edition.
+- [ ] D. “Local” is an alias for Terraform variables.
+
+**Explanation:**
+
+Option B is correct. Options A and D are incorrect because using locals does not encrypt values and they are not an alias for Terraform variables. Option C is incorrect as locals are supported in all editions.
+
+---
+
+### Question 44
+
+**Correct Answer(s):** A, C
+
+**Options:**
+- [✓] A. It prevents Terraform from showing its value in the plan or apply output.
+- [ ] B. Terraform encrypts the data when the sensitive option is set.
+- [✓] C. Terraform will still record sensitive values in the state in plain text and they can be accessed.
+- [ ] D. Terraform locks the variables in the state file and only authorized people can see or update variables.
+
+**Explanation:**
+
+Options A and C are correct. Option D is incorrect as Terraform does not have any option to lock the variables. Option B is incorrect as Terraform does not do any encryption.
+
+---
+
+### Question 45
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. It creates a new AMI called web-server-ami and tags it with the name web-server and version 9.
+- [✓] B. It requests Terraform to read from the aws_ami data source and store the result in web-server-ami, which can later be referred to from the other configuration files.
+- [ ] C. It queries AWSs public AMIs and exports the latest AMI ID into our state file to be used later.
+- [ ] D. The code has the wrong syntax and will throw an error when it is run.
+
+**Explanation:**
+
+Option B is correct because data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
+
+---
+
+### Question 46
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. Data blocks are used when you need to create the object block resources in the cloud.
+- [ ] B. Data blocks allow Terraform to use the outputs of CloudFormation to be used in the current configuration.
+- [ ] C. Data blocks are used when you need to launch database servers.
+- [✓] D. Data blocks allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
+
+**Explanation:**
+
+Option D is correct. Options A, B, and C are wrong as they are not the function or use of the data blocks in Terraform.
+
+---
+
+### Question 47
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. TRUE
+- [ ] B. FALSE
+
+**Explanation:**
+
+Option A is correct as Terraform uses implicit dependency to create resources. When you want to define some explicit dependency, you use the depends_on meta-argument in either the resource or module block.
+
+---
+
+### Question 48
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. TRUE
+- [ ] B. FALSE
+
+**Explanation:**
+
+Option A is correct as HCP Terraform manages infrastructure collections with workspaces instead of directories. A workspace contains everything Terraform needs to manage a given collection of infrastructure, and separate workspaces function like completely separate working directories.
+
+---
+
+### Question 49
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. TRUE
+- [✓] B. FALSE
+
+**Explanation:**
+
+Option B is correct as all editions of Terraform support integration with a version control system (VCS).
+
+---
+
+### Question 50
+
+**Correct Answer(s):** B, D, E
+
+**Options:**
+- [ ] A. Terraform Unlimited
+- [✓] B. HCP Terraform (Free, Standard, and Plus)
+- [ ] C. Terraform Developers Edition
+- [✓] D. Terraform Enterprise
+- [✓] E. Terraform Community Edition
+
+**Explanation:**
+
+Options B, D, and E are correct. There is no edition by the names of Terraform Unlimited or Terraform Developers Edition. All the others except these two are valid Terraform editions.
+
+---
+
+### Question 51
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. Username and password
+- [ ] B. Access key and secret key
+- [✓] C. API key
+- [ ] D. SMS/email with a one-time password
+
+**Explanation:**
+
+Option C is correct as the terraform login command can be used to automatically obtain and save an API token for HCP Terraform, Terraform Enterprise, or any other host that offers Terraform services.
+
+---
+
+### Question 52
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. It gets stored in the credentialstfrcjson file
+- [ ] B. It gets stored in the credentialstfstate file
+- [ ] C. It is stored only in the memory of the machine where Terraform is run
+- [ ] D. A token is used only once and then discarded
+
+**Explanation:**
+
+Option A is correct as the API token gets stored in the credentials.tfrc.json file.
+
+---
+
+### Question 53
+
+**Correct Answer(s):** A, B, D, E
+
+**Options:**
+- [✓] A. Self-hosted distribution
+- [✓] B. Cross-organization registry sharing
+- [ ] C. Private registry
+- [✓] D. Application-level logging
+- [✓] E. Log forwarding
+- [ ] F. Policy as code (Sentinel and OPA)
+
+**Explanation:**
+
+Options A, B, D, and E are correct. The private registry and policy-as-code options are also available in HCP Terraform. The other four options are exclusive to Terraform Enterprise.
+
+---
+
+### Question 54
+
+**Correct Answer(s):** A, C, E, F
+
+**Options:**
+- [✓] A. tfplan
+- [ ] B. tfwrite
+- [✓] C. tfconfig
+- [ ] D. tfapply
+- [✓] E. tfstate
+- [✓] F. tfrun
+
+**Explanation:**
+
+Options A, C, E, and F are correct. HCP Terraform provides four imports to define policy rules for plan, configuration, state, and run, associated with a policy check: tfplan tfconfig tfstate tfrun There are no other options other than these.
+
+---
+
+### Question 55
+
+**Correct Answer(s):** B, E
+
+**Options:**
+- [ ] A. Advisory
+- [✓] B. Critical
+- [ ] C. Soft Mandatory
+- [ ] D. Hard Mandatory
+- [✓] E. Alert
+
+**Explanation:**
+
+Options B and E are correct. A Sentinel policy supports three enforcement levels:  Advisory  Soft Mandatory  Hard Mandatory  The other options are not valid.
+
+---
+
+### Question 56
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. Publish the module to a private registry of Terraform Cloud and share it with your team members
+- [ ] B. Publish the module to the Terraform public registry and share the link to the module with the team
+- [ ] C. Use a shared virtual machine on the cloud and store your module there Share the credentials with your team members to let them access the module
+- [ ] D. Email the module code to all your team members and ask them to create the same module on their laptops
+
+**Explanation:**
+
+Option A is correct because when you want to share the modules with a limited set of people, you cannot use a public repository. You will have to use the private repository. Other options are not optimal.
+
+---
+
+### Question 57
+
+**Correct Answer(s):** C, E
+
+**Options:**
+- [ ] A. AWS CloudFormation
+- [ ] B. Azure Resource Manager
+- [✓] C. Open Policy Agent (OPA)
+- [ ] D. Google Deployment Manager
+- [✓] E. Sentinel
+
+**Explanation:**
+
+Options C and E are correct. The only policy-as-code frameworks in the options are Open Policy Agent (OPA) and Sentinel. AWS CloudFormation, Azure Resource Manager, and Google Deployment Manager are IaC services from AWS, Microsoft, and Google, respectively.
+
+---
+

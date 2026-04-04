@@ -1,0 +1,27 @@
+**Question 1**
+
+Option D is correct because providers help in interactions with cloud providers and create different resources. Option A is incorrect because resources are fundamental building blocks for creating infrastructure and they do not interact directly. Option B is incorrect because data sources are used to fetch details from real-world infrastructure resources using Terraform. Remote backends are used to store the state file in a remote and secure location for high availability for a set of configuration scripts and, hence, option C is also incorrect.
+
+---
+
+**Question 2**
+
+Option A is correct as, in this example, the provider used is helm, hosted in the hashicorp namespace. By default, the official providers are hosted in the hashicorp namespace, owned and maintained by HashiCorp. Option B is incorrect because the community providers are maintained by individual maintainers or other members of the Terraform community. Option C is incorrect because these types of providers are created and maintained by third-party companies, and validated against their own APIs. Option D is incorrect because archived providers are the ones that are no longer maintained.
+
+---
+
+**Question 3**
+
+Option B is correct because https://app.terraform.io is the URL that Terraform Cloud customers can access to set up their organization to execute Terraform code. Option A is incorrect because it is an invalid URL and is not accessible at all. Option C is incorrect because https://registry.terraform.io is the public Terraform Registry to host different providers and modules. Option D is also incorrect because it is not a valid URL.
+
+---
+
+**Question 4**
+
+Option C is correct because, in the core Terraform workflow, the first step is to write/create the configuration script, followed by previewing the changes using the terraform plan command, and if the changes look fine, the last step is to go ahead and apply the changes. The other options do not have these steps in the right order.
+
+---
+
+**Question 5**
+
+Option B is correct because this setting will just help in maintaining tighter control with the Terraform CLI version used for execution and does not stop anyone if they are not using this setting. Option A is incorrect because the required_version setting is not mandatory and can be skipped. In this approach, the Terraform CLI can be of any version, and it can run the scripts.

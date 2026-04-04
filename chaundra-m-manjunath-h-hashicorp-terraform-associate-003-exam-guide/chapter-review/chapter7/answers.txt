@@ -1,0 +1,21 @@
+**Question 1**
+
+Option D is correct because there is no level by the name of CRITICAL in Terraform logging. Terraform logging supports all the other options provided in the question.
+
+---
+
+**Question 2**
+
+Option A is correct because when you want to unlock the Terraform state manually, you will have to use the command in the question. You need to replace LOCK_ID with the actual ID that you would get during the error.
+
+---
+
+**Question 3**
+
+Option B is correct because TF_LOG is the environment variable used to enable detailed logs in Terraform. Options A and D are incorrect because there is no environment variable by the names of TF_LOGGING or TF_LOG_ENABLE. Option C is an environment variable but it is used to define the path to the file where the logs need to be stored.
+
+---
+
+**Question 4**
+
+Option E is correct because terraform validate checks the syntax of the configuration file in the current working directory and it does not make any provider API calls. Options A and B are correct and they are combined in option E. Option C is incorrect because the terraform validate command does not fix any issues in the code. Option D is incorrect because the terraform validate command does not run terraform apply. Option F is a combination of C and D and hence is incorrect too.

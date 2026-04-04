@@ -1,0 +1,30 @@
+**Question 1**
+
+Which of the following IaC tools is offered by Amazon Web Services (AWS) and helps in automating the creation of infrastructure resources?
+
+A) CloudFormation  
+B) Pulumi  
+C) Terraform  
+D) Ansible
+
+---
+
+**Question 2**
+
+In AWS CloudFormation, templates can consist of a number of sections. Select the invalid ones from the following list of options:
+
+A) Resources  
+B) Mappings  
+C) Services  
+D) Outputs
+
+---
+
+**Question 3**
+
+Select the characteristics that are applicable to Infrastructure as Code (IaC) from the following options. (Select THREE)
+
+A) It uses a declarative approach to specify what resources need to be created.  
+B) It uses an imperative approach to specify how exactly the resources must be provisioned.  
+C) It uses version control for IaC code to restore previous versions or snapshots.  
+D) The code can be executed any number of times and the results won't change.

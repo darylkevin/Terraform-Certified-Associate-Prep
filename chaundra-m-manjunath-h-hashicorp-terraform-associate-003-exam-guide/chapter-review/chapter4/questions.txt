@@ -1,0 +1,28 @@
+**Question 1**
+
+It is possible to target a particular Terraform resource or group of resources inside a module with the terraform plan command. True or false?
+
+A) True  
+B) False
+
+---
+
+**Question 2**
+
+Which of the following Terraform commands will not access the state file or call provider APIs upon execution and works locally within the directory?
+
+A) terraform console  
+B) terraform validate  
+C) terraform plan  
+D) terraform apply
+
+---
+
+**Question 3**
+
+Which of the following terraform state subcommands will list all resources in the state file?
+
+A) terraform state output  
+B) terraform state show  
+C) terraform state list  
+D) terraform state pull

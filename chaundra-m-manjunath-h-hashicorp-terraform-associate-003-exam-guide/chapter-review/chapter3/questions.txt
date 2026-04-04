@@ -1,0 +1,61 @@
+**Question 1**
+
+_______________ are part of the abstraction layer in Terraform, which is primarily used to interact with different cloud providers for creating and managing resources.
+
+A) Resources  
+B) Data sources  
+C) Remote backends  
+D) Providers
+
+---
+
+**Question 2**
+
+Consider this terraform {} block and select the right type of provider used here as per the Terraform standards:
+
+```hcl
+terraform {
+  required_providers {
+    helm = {
+      source = "hashicorp/helm"
+      version = "2.13.2"
+    }
+  }
+}
+```
+
+A) Official provider  
+B) Community provider  
+C) Partner provider  
+D) Archived provider
+
+---
+
+**Question 3**
+
+HCP Terraform (previously known as Terraform Cloud) is a hosted service accessible using which of the following URLs?
+
+A) https://cloud.terraform.io  
+B) https://app.terraform.io  
+C) https://registry.terraform.io  
+D) https://terraformcloud.io
+
+---
+
+**Question 4**
+
+Select the option that has the steps involved in the core Terraform workflow in the correct sequence:
+
+A) PLAN, APPLY, and DESTROY  
+B) CREATE, PLAN, and DESTROY  
+C) WRITE, PLAN, and APPLY  
+D) WRITE, CREATE, and APPLY
+
+---
+
+**Question 5**
+
+The required_version setting in the terraform {} block is always mandatory and the minimum version of Terraform to run the script should be specified.
+
+A) True  
+B) False

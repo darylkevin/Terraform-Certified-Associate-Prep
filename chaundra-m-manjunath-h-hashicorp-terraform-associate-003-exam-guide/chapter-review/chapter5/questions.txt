@@ -1,0 +1,81 @@
+**Question 1**
+
+The remote modules are downloaded into a .terraform directory of the current working directory. True or False?
+
+A) FALSE  
+B) TRUE
+
+---
+
+**Question 2**
+
+How do you call a child module from the root module?
+
+A) 
+```hcl
+module "ec2" {
+  source = "./ec2-instance"
+}
+```
+
+B) 
+```hcl
+module "ec2" {
+  child_module = "./ec2-instance"
+}
+```
+
+C) 
+```hcl
+root_module "ec2" {
+  source = "./ec2-instance"
+}
+```
+
+D) None of the above
+
+---
+
+**Question 3**
+
+Review the following code used to install the aws provider and select the right option:
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+```
+
+A) An AWS provider version less than 5.0 is installed.  
+B) An AWS provider version greater than 6.0 is installed.  
+C) An AWS provider version greater than 5.0 but less than 6.0 is installed.  
+D) Terraform Core version 5.0.0 is installed.
+
+---
+
+**Question 4**
+
+Which of the following options can be used to install the Terraform module?
+
+A) Local paths  
+B) Terraform Registry  
+C) VCS such as GitHub/Bitbucket/Mercurial  
+D) HTTP URLs  
+E) AWS S3 buckets/GCS buckets  
+F) All the above
+
+---
+
+**Question 5**
+
+Which of the following options is not a meta-argument that can be used in the Terraform module?
+
+A) count  
+B) for_each  
+C) depends_on  
+D) remote-exec

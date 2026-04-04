@@ -1,0 +1,27 @@
+**Question 1**
+
+Option B is correct because remote modules are downloaded into a .terraform directory where you run terraform init or terraform get. As the directory starts with ., it is hidden in the filesystem. However, you should be able to navigate into this folder to check the downloaded modules.
+
+---
+
+**Question 2**
+
+Option A is correct because you use the module block in the root module to call the child module. The source argument is used to specify the path where the child module is present. In this case, the child module, "ec2-instance", is present on the local filesystem. Option B is incorrect because there is no child_module argument in the module block. Option C is incorrect because there is no root_module block in Terraform.
+
+---
+
+**Question 3**
+
+Option C is correct because ~> is called a pessimistic constraint operator and will only allow the version upgrade of the rightmost component. Here, the AWS provider can upgrade to any version after 5.0 if it is below version 6.0. Option A is incorrect because the AWS provider of a version less than 5.0 will not be installed as the operator is ~>. Option B is incorrect because the AWS provider of a version greater than 6.0 will not be installed because the operator is ~>. Option D is incorrect because the code is about installing the AWS provider and not Terraform Core.
+
+---
+
+**Question 4**
+
+Option F is correct because the Terraform module can be installed from all the sources specified in the other options.
+
+---
+
+**Question 5**
+
+Option D is correct as remote-exec is a Terraform provisioner and is not a meta-argument of the module. Options A, B, and C are all meta-arguments of the module.

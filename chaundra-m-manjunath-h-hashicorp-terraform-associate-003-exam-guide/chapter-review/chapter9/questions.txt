@@ -1,0 +1,42 @@
+**Question 1**
+
+Your company wants to use Terraform but has an air-gapped environment due to strong security requirements (air-gapped environments are those networks that are isolated from the internet both physically and logically). Which of the following options BEST suits your needs?
+
+A) HCP Terraform Free  
+B) HCP Terraform Standard  
+C) Terraform Enterprise  
+D) HCP Terraform Plus  
+E) None of the above
+
+---
+
+**Question 2**
+
+Which of the following options is INCORRECT about HCP Terraform's private registry?
+
+A) HCP Terraform's private registry helps you share Terraform providers and Terraform modules across your organization.  
+B) HCP Terraform's private registry includes support for versioning and a searchable list of available providers and modules.  
+C) You can add providers and modules from the public Terraform Registry to your HCP Terraform private registry.  
+D) Any user can push the module/provider to the HCP Terraform private registry.
+
+---
+
+**Question 3**
+
+Which of the following is not a Sentinel policy enforcement level?
+
+A) Advisory  
+B) Soft mandatory  
+C) Hard mandatory  
+D) Compulsory
+
+---
+
+**Question 4**
+
+Which of the following policy-as-code frameworks are supported by HCP Terraform?
+
+A) Sentinel  
+B) Open Policy Agent (OPA)  
+C) Both A and B  
+D) None of the above

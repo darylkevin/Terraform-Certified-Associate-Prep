@@ -1,0 +1,15 @@
+**Question 1**
+
+Option A is correct as the range() function with the three arguments will have the starting value and max value followed by the step value, respectively. In this case, the step value is 3, so the sequence generated will be [4, 7, 10, 13, 16, 19].
+
+---
+
+**Question 2**
+
+Option B is correct because the signum() function will return the sign of the given number, which will be 1 for a positive number. This function will return 0 if the input value is zero (0).
+
+---
+
+**Question 3**
+
+Option B is correct as the split function will split the input string based on the split character and the output will be a list. Hence, the type of the output value in this case would be list(string).

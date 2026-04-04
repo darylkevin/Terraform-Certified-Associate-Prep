@@ -1,0 +1,3 @@
+Key topics
+(1/9)
+Some key topics that we suggest you revise a day before the certification are as followsTerraform architecture: key files/directories that get created while using Terraform, and their functionalitiesModulesTerraform stateBackendsCLI commandsTerraform Cloud workspacesSentinel policiesTeams and permissions in Terraform Enterprise

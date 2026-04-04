@@ -1,0 +1,15 @@
+**Question 1**
+
+Option A is correct because with the `-target=<RESOURCE_ADDRESS>` option in the terraform plan command, a particular resource or a module with a group of resources can be targeted. The same option is available with the terraform apply command as well.
+
+---
+
+**Question 2**
+
+Option B is correct because the terraform validate command will work only within the directory and it validates the configuration scripts. Option A is incorrect because the terraform console command will interact with the state file and hold a lock while the terminal session is active. Options C and D are incorrect because both of these commands will update the state file and call relevant provider APIs based on the scripts.
+
+---
+
+**Question 3**
+
+Option C is correct because the terraform state list subcommand will list all resources available in the state file. Option A is incorrect because terraform state output is an invalid subcommand. Option B is incorrect because the terraform state show subcommand will output the attributes of a particular resource only. Option D is incorrect because the terraform state pull command is used to download the state file from the current location and to upgrade it so that it is compatible with the locally installed Terraform version.

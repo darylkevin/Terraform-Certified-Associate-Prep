@@ -1,0 +1,21 @@
+**Question 1**
+
+Option C is correct because when you have an air-gapped environment, the preference would be to do an installation within the environment since no calls can be made to the internet. Such a use case can only be met by Terraform Enterprise. Options A, B, and D are all SaaS offerings from Terraform, where you need outbound internet connectivity. Hence, these are ruled out for this use case.
+
+---
+
+**Question 2**
+
+Option D is correct because only approved users within the organization can push the module or provider code to the HCP private registry. Options A, B, and C are all incorrect as the statements are right with regard to HCP Terraform's private registry.
+
+---
+
+**Question 3**
+
+Option D is correct because there is no policy enforcement level called Compulsory in Sentinel. Sentinel has other policy enforcement levels, as given in options A, B, and C.
+
+---
+
+**Question 4**
+
+Option C is correct because Terraform supports two policy-as-code frameworks, Sentinel and OPA.

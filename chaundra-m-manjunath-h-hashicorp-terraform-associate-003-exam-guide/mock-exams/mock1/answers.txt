@@ -1,0 +1,808 @@
+# MOCK1 - Answers
+
+### Question 1
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. Pulumi
+- [ ] B. AWS CloudFormation
+- [✓] C. Ansible
+- [ ] D. HashiCorp Terraform
+
+**Explanation:**
+
+Option C is correct since Ansible is primarily used for configuration management, whereas the other tools are IaC tools used with infrastructure provisioning. Hence, options A, B, and D are incorrect.
+
+---
+
+### Question 2
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because the core Terraform workflow can be used to manage different providers and dependencies across various cloud providers, which will help in multi-cloud deployments. Hence, option B is incorrect.
+
+---
+
+### Question 3
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. provider = east
+- [ ] B. region = us-west-1
+- [ ] C. provider = west
+- [✓] D. provider = aws.west
+
+**Explanation:**
+
+Option B is correct to refer to the alternate provider configuration for the AWS provider with the us-west-1  region. Options A and C are incorrect because the provider names are not valid in this case. Option D is incorrect because the region attribute cannot be used directly with the resource.
+
+---
+
+### Question 4
+
+**Correct Answer(s):** B, C, D
+
+**Options:**
+- [ ] A. 1.4.0
+- [✓] B. 1.5.7
+- [✓] C. 1.5.0
+- [✓] D. 1.5.11
+
+**Explanation:**
+
+Options B, C, and D are correct because, as per the version constraints in the terraform {} block, the ~> operator will allow any minor version to be used and the <= operator will accept any Terraform version lesser than or equal to the coded version. Option A does not satisfy the conditions and is hence incorrect.
+
+---
+
+### Question 5
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. custom
+- [ ] B. community
+- [✓] C. official
+- [ ] D. third-party
+
+**Explanation:**
+
+The official Terraform providers are owned and maintained by HashiCorp and hosted in the hashicorp  namespace.
+
+---
+
+### Question 6
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. -ignore-remote-version
+- [ ] B. -replace-providers
+- [✓] C. -upgrade
+- [ ] D. -force-copy
+- [ ] E. -reconfigure
+
+**Explanation:**
+
+Option C is correct because when the -upgrade option is used with the terraform init command, it will always download the latest provider versions as per the version constraints. The other options are incorrect since they are not valid in this case.
+
+---
+
+### Question 7
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct. The Terraform dependency lock file tracks only provider dependencies and the remote modules are not tracked as of now. Hence, Terraform will always download the latest version of the remote modules.
+
+---
+
+### Question 8
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. https://providers.terraform.io
+- [ ] B. https://modules.terraform.io
+- [✓] C. https://registry.terraform.io
+- [ ] D. https://terraform.io/registry
+
+**Explanation:**
+
+The Terraform Registry is hosted at https://registry.terraform.io and it has a collection of the publicly available Terraform providers for major cloud service providers
+
+---
+
+### Question 9
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. terraform import aws_instance.dev_server i-123767890
+- [✓] B. terraform import i-12376789 aws_instance.dev_server
+- [ ] C. terraform import 'aws_instance.dev_server[0]' i-12376789
+- [ ] D. terraform import module.aws_instance.dev_server i-12376789
+
+**Explanation:**
+
+Option C is correct because the import command refers correctly to the resource address with the first instance as zero and the instance ID as i-12376789 . Options A and D are incorrect because the count  attribute is not considered in these options. Option B is incorrect because it is not correct syntactically.
+
+---
+
+### Question 10
+
+**Correct Answer(s):** C, D
+
+**Options:**
+- [ ] A. The terraform import command can import one resource at a time only.
+- [ ] B. The terraform import command can import multiple resources at a time.
+- [✓] C. terraform import cannot handle importing a single instance of resources  with the  count or for_each meta-arguments.
+- [✓] D. The terraform import command is used to import the existing infrastructure into the Terraform state file.
+
+**Explanation:**
+
+Options C and D are correct since these statements are not true regarding the terraform import command. The terraform import  command can import only one resource at a time, and you cannot selectively import the resources that are provisioned using the resource block with the count  or for_each meta-arguments.
+
+---
+
+### Question 11
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. terraform state mv
+- [ ] B. terraform state rm
+- [ ] C. terraform state cp
+- [ ] D. terraform state push
+- [ ] E. terraform state pull
+
+**Explanation:**
+
+Option A is correct since the terraform state mv command is used to track the resources with a new name.
+Option B is incorrect because the command removes the resources from the state  file and option C is incorrect because it is not valid in this case.
+Options D and E are incorrect because terraform state push and terraform state pull are used to upload and download the state file from the remote backend, respectively.
+
+---
+
+### Question 12
+
+**Correct Answer(s):** B, E
+
+**Options:**
+- [ ] A. terraform state pull
+- [✓] B. terraform apply -refresh-only
+- [ ] C. terraform state push
+- [ ] D. terraform state rm
+- [✓] E. terraform refresh
+
+**Explanation:**
+
+Options B and E are correct since the refresh-only mode of the terraform apply and terraform refresh commands will sync the state file with the changes made to the remote  objects. Option A is incorrect as it will download the state file from the remote backend. Option C is incorrect as it will upload the state file. Option D is incorrect since it will remove the specific resources from the state file.
+
+---
+
+### Question 13
+
+**Correct Answer(s):** E
+
+**Options:**
+- [ ] A. TF_LOG=DEBUG
+- [ ] B. TF_LOG=WARN
+- [ ] C. TF_LOG=ERROR
+- [ ] D. TF_LOG=INFO
+- [✓] E. TF_LOG=TRACE
+
+**Explanation:**
+
+Option E is correct because TF_LOG  set to TRACE  will output the maximum information from the Terraform execution. Option C will give the minimum verbosity out of all these options. Options A, B, and D will have less verbosity compared to TRACE .
+
+---
+
+### Question 14
+
+**Correct Answer(s):** A, B, D
+
+**Options:**
+- [✓] A. Bitbucket
+- [✓] B. HTTP URL
+- [ ] C. Docker registry
+- [✓] D. S3 bucket
+- [ ] E. AzureRM
+
+**Explanation:**
+
+As per the Terraform documentation, the supported archives/endpoints for module sources are Bitbucket, GitHub, any generic Git repository, S3 buckets, HTTP endpoints, and so on. AzureRM and Docker registry are not supported by Terraform.
+Hence, options A, B, and D are correct, while the others are incorrect.
+
+---
+
+### Question 15
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because the attributes of the resources created inside the module will not be accessed from the calling module unless they are exported from the child module.
+
+---
+
+### Question 16
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. move-state
+- [ ] B. force-copy
+- [✓] C. migrate-state
+- [ ] D. reconfigure
+
+**Explanation:**
+
+Option C is correct because the -migrate-state option will help in migrating the existing state safely to the new backend. Option A is incorrect because -move-state is not a valid option for the terraform init command. Option B is incorrect because it will not prompt for the copy operation. Option D is incorrect since the -reconfigure option will configure the backend again for the configuration script and cannot migrate the state  file.
+
+---
+
+### Question 17
+
+**Correct Answer(s):** B, C, E
+
+**Options:**
+- [ ] A. terraform init
+- [✓] B. terraform plan
+- [✓] C. terraform apply
+- [ ] D. terraform import
+- [✓] E. terraform destroy
+
+**Explanation:**
+
+Options B, C, and E are correct because the -parallelism option is supported for the terraform plan, terraform apply, and terraform destroy commands as per the Terraform documentation. Options A and D are incorrect because --parallelism cannot be controlled with the terraform init and terraform import commands.
+
+---
+
+### Question 18
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. True
+- [✓] B. False
+
+**Explanation:**
+
+Option B is correct because Terraform will always try to create multiple resources in parallel based on the implicit and explicit dependencies, but a specific order cannot be guaranteed for other resources due to this factor. Hence, option A is incorrect.
+
+---
+
+### Question 19
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. /terraform.tfstate
+- [ ] B. .terraform//terraform.tfstate
+- [ ] C. workspaces//terraform.tfstate
+- [✓] D. terraform.tfstate.d//terraform.tfstate
+
+**Explanation:**
+
+When Terraform workspaces are used with the local backend, each workspace will have a separate directory to manage the state file. The directory for each space will be created inside the terraform.tfstate.d directory and then followed by the workspace name, and it will contain the state file.
+
+---
+
+### Question 20
+
+**Correct Answer(s):** A, B
+
+**Options:**
+- [✓] A. terraform workspace show
+- [✓] B. terraform workspace list
+- [ ] C. terraform workspace select
+- [ ] D. terraform workspace display
+- [ ] E. terraform workspace name
+
+**Explanation:**
+
+Options A and B are correct since both commands will display the current workspace in the context. Option C is incorrect because it helps select one of the workspaces already created. Options D and E are incorrect as they are not valid commands.
+
+---
+
+### Question 21
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because the -target option along with the terraform apply command will provision that resource rather than applying it for the entire configuration.
+
+---
+
+### Question 22
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. terraform plan -state-lock=false
+- [ ] B. terraform state unlock
+- [✓] C. terraform force-unlock
+- [ ] D. terraform apply -state-unlock=true
+
+**Explanation:**
+
+Option C is correct because the terraform force-unlock command is used to remove the lock. The other commands are not valid in this case.
+
+---
+
+### Question 23
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because the terraform {} block cannot be configured with the cloud {} block (meant for Terraform cloud configuration) and the backend {} block to be used for other valid remote backends, as it   would result in conflict.
+
+---
+
+### Question 24
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. Kubernetes
+- [✓] B. Docker
+- [ ] C. COS
+- [ ] D. AzureRM
+- [ ] E. S3
+
+**Explanation:**
+
+Option B is correct because, as per the Terraform documentation, Docker is not among the valid backends supported by Terraform. All the other options are valid backends.
+
+---
+
+### Question 25
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. terraform state list
+- [ ] B. terraform state mv
+- [ ] C. terraform state pull
+- [✓] D. terraform state select
+
+**Explanation:**
+
+Option D is correct because there is no such command as terraform state select. Options A, B, and C are valid subcommands. The valid subcommands of terraform state  are the following:
+•terraform state list
+•terraform state show
+•terraform state pull
+•terraform state push
+•terraform state mv
+•terraform state rm
+•terraform state replace-provider
+
+---
+
+### Question 26
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. type = list(string)
+- [ ] B. type = list(object)
+- [ ] C. type = list(object({ string = name }))
+- [✓] D. type = list(object({ name = string }))
+
+**Explanation:**
+
+Option D is correct as the type correctly matches the sample value for the names variable as it is a list of object types with the name  attribute. Options A and B are incorrect because the names variable has key-value pairs. Option C is incorrect because the definition is syntactically incorrect.
+
+---
+
+### Question 27
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. -1
+- [✓] B. 0
+- [ ] C. 1
+- [ ] D. Syntax error
+
+**Explanation:**
+
+Option B is correct because the signum() function will return 1  for positive numbers, -1  for negative numbers, and 0  if the input is 0. Option D is incorrect as the output block is good and there are no errors in it.
+
+---
+
+### Question 28
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. True
+- [✓] B. False
+
+**Explanation:**
+
+Option B is correct because Terraform will restrict displaying the output value if it is marked as sensitive, but the state file will still store the value as plain text.
+
+---
+
+### Question 29
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. ["Adam", 15, true]
+- [ ] B. ["Adam", age = 15, "true"]
+- [ ] C. [{"Adam", "15", "true"}]
+- [ ] D. [name = "Adam", "15", "true"]
+
+**Explanation:**
+
+Option A is correct because Terraform will take care of the automatic conversion of the values to match with the variable type. Options B and D are incorrect since they have   a key-value pair and option C has curly braces that will be used with the object type.
+
+---
+
+### Question 30
+
+**Correct Answer(s):** A, B
+
+**Options:**
+- [✓] A. tuple([string, string])
+- [✓] B. list(string)
+- [ ] C. map(string)
+- [ ] D. string
+- [ ] E. list(tuple)
+
+**Explanation:**
+
+Options A and B are correct because the given value matches with the type specified in these options. Option C is incorrect because the map  type will have values enclosed in curly braces. Option D is incorrect as it cannot store multiple values, and option E is incorrect as the primitive type of values is of the string  type.
+
+---
+
+### Question 31
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. create_before_destroy
+- [ ] B. prevent_destroy
+- [ ] C. ignore_changes
+- [✓] D. depends_on
+- [ ] E. replace_triggered_by
+
+**Explanation:**
+
+Option D is correct because depends_on is a meta-argument supported for resources, data blocks, and output values. Options A, B, C, and E are valid arguments of the lifecycle {} block.
+
+---
+
+### Question 32
+
+**Correct Answer(s):** B, C, D
+
+**Options:**
+- [ ] A. object
+- [✓] B. list
+- [✓] C. set
+- [✓] D. map
+- [ ] E. tuple
+
+**Explanation:**
+
+Options B, C, and D are correct because these types are generally grouped as collection types to create a new value with the collection of values in primitive types such as string  and number .
+Options A and E are incorrect because object and tuple are structural types.
+
+---
+
+### Question 33
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. True
+- [✓] B. False
+
+**Explanation:**
+
+Option B is correct because the check {} block will not stop the current operation if the validation fails, unlike other condition checks such as preconditions and postconditions.
+
+---
+
+### Question 34
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. depends_on
+- [ ] B. for_each
+- [ ] C. count
+- [✓] D. lifecycle
+
+**Explanation:**
+
+Option D is correct because the lifecycle {} block is applicable for resource block only. Options A, B, and C are the ones that can be used in resource blocks as well as data and module blocks.
+
+---
+
+### Question 35
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because condition  is always mandatory for preconditions and postcondition s, but the error message is optional.
+
+---
+
+### Question 36
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. default_tags
+- [ ] B. locals.default_tags
+- [✓] C. local.default_tags
+- [ ] D. local.default_tags.values
+
+**Explanation:**
+
+Option C is correct because when the local values are referred to in the configuration, it has to be prefixed by local followed by a period. Options A and B are incorrect as these are not valid ways of referencing local values. Option D is incorrect because the values  attribute is not applicable in this case.
+
+---
+
+### Question 37
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. testmodule["b"].aws_sqs_queue.queue1
+- [✓] B. module.testmodule["b"].aws_sqs_queue.queue1
+- [ ] C. module.testmodule.aws_sqs_queue.queue1["b"]
+- [ ] D. testmodule["b"]. aws_sqs_queue.queue1[2]
+
+**Explanation:**
+
+Option B is correct since the resource address for the aws_sqs_queue.queue1 resource must be prefixed with the module keyword and module name for the fully qualified name since it is created inside the testmodule module.
+Option A is incorrect because the module keyword is missing before the module name. Options C and D are incorrect because the for_each key is not used correctly.
+
+---
+
+### Question 38
+
+**Correct Answer(s):** B, D
+
+**Options:**
+- [ ] A. aws_s3_bucket.testforeach["prod"]
+- [✓] B. aws_s3_bucket.testforeach["env_1"]
+- [ ] C. aws_s3_bucket.testforeach["dev"]
+- [✓] D. aws_s3_bucket.testforeach["env_2"]
+
+**Explanation:**
+
+Options A and C are correct because these options follow the right resource addressing the .[“key_name”]  syntax.
+
+---
+
+### Question 39
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. "abc" + "123" + "xyz"
+- [ ] B. concat("abc", "123", "xyz")
+- [✓] C. join("+", ["abc", "123", "xyz"])
+- [ ] D. join("+", "abc", "123", "xyz")
+
+**Explanation:**
+
+Option C is correct because the join() function will take the elements from the list and create a string with the specified delimiter. Option A is incorrect because the + arithmetic operator can only be used with numbers. Option B is incorrect since concat() functions will join multiple lists into a single list. Option D is incorrect because the second operand for the function is not a list.
+
+---
+
+### Question 40
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. 37
+- [ ] B. 13
+- [ ] C. 45
+- [ ] D. 36
+
+**Explanation:**
+
+Option A is correct because the return value is 37  for the given expression and the asterisk (*) operator takes precedence first and then the + operator is evaluated.
+
+---
+
+### Question 41
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. string
+- [ ] B. number
+- [ ] C. “not same”
+- [ ] D. bool
+
+**Explanation:**
+
+Option A is correct since the return type of both the cases in this expression returns a string value. Options B and D are incorrect because the output value is not of the number or bool type. Option C is incorrect as it is a return value and not the type.
+
+---
+
+### Question 42
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. uuid_v4()
+- [ ] B. random_uuid()
+- [ ] C. generate_uuid()
+- [✓] D. uuid()
+
+**Explanation:**
+
+The uuid() function can be used to generate UUIDs in version 4 using Terraform.
+
+---
+
+### Question 43
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. nested {}
+- [ ] B. check {}
+- [ ] C. provisioner {}
+- [✓] D. dynamic {}
+
+**Explanation:**
+
+Option D is correct because the dynamic block is used to create repeatable nested blocks within the resource block.
+Option A is incorrect since the nested block is not a valid block type supported by Terraform. Option C is incorrect since provisioners are used to execute commands in the locally running Terraform or remote machine, provisioned using Terraform. Option B is incorrect as it checks for validation and does not create any nested blocks.
+
+---
+
+### Question 44
+
+**Correct Answer(s):** D
+
+**Options:**
+- [ ] A. The dynamic {} block
+- [ ] B. The precondition {} block
+- [ ] C. The postcondition {} block
+- [✓] D. The check {} block
+- [ ] E. The provisioner {} block
+
+**Explanation:**
+
+Option D is correct because the check {} block will not stop the apply operation if the validation fails. Options B and C are incorrect because precondition and postcondition will throw an error and the operation will be terminated if the specified condition fails. The dynamic {} block generates resource definitions dynamically, and the provisioner {} block  helps execute commands locally or on the remote machine. Hence, options A and E are incorrect.
+
+---
+
+### Question 45
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. jsonencode()
+- [ ] B. jsondecode()
+- [ ] C. base64encode()
+- [ ] D. tostring()
+
+**Explanation:**
+
+Option A is correct because the jsonencode() function will encode the given value using JSON syntax. Option B is incorrect as it will decode the given JSON value. Option C is incorrect as it will return the base64  encoded value of the input string, and option D is incorrect as it will convert the given value to string .
+
+---
+
+### Question 46
+
+**Correct Answer(s):** A
+
+**Options:**
+- [✓] A. True
+- [ ] B. False
+
+**Explanation:**
+
+Option A is correct because the depends_on meta-argument behavior is the same with the data sources as with the resources.
+
+---
+
+### Question 47
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. providers
+- [✓] B. depends_on
+- [ ] C. count
+- [ ] D. for_each
+
+**Explanation:**
+
+The depends_on meta-argument will set the explicit dependency between the resources so the inferred resources are provisioned first and then the dependent resources are created.
+
+---
+
+### Question 48
+
+**Correct Answer(s):** C
+
+**Options:**
+- [ ] A. Terraform Enterprise
+- [ ] B. Terraform CLI
+- [✓] C. Terraform Cloud
+- [ ] D. Terraform Core
+
+**Explanation:**
+
+Terraform Cloud is available as a hosted service and it manages Terraform and runs in a consistent and reliable environment with additional features such as audit logging and drift detection.
+
+---
+
+### Question 49
+
+**Correct Answer(s):** B
+
+**Options:**
+- [ ] A. HCL
+- [✓] B. Sentinel
+- [ ] C. JSON
+- [ ] D. YAML
+
+**Explanation:**
+
+The Sentinel language can be used along with Terraform to enforce policies for the executions.
+
+---
+
+### Question 50
+
+**Correct Answer(s):** B, C
+
+**Options:**
+- [ ] A. Single sign-on (SSO)
+- [✓] B. Log forwarding
+- [✓] C. Self-hosted installation
+- [ ] D. Support for ServiceNow integrations
+- [ ] E. Drift detection
+
+**Explanation:**
+
+Options B and C are correct and these are special features applicable only to Terraform Enterprise. The other capabilities are also applicable to Terraform Cloud as well, along with Terraform Enterprise.
+
+---
+

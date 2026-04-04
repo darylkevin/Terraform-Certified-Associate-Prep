@@ -1,0 +1,8 @@
+Dashboard
+Chapter 8
+Terraform Functions
+Summary
+In this chapter, you looked at the different types of functions, starting with basic numeric and string functions, followed by collection functions to work with the complex types. Then, the type conversion functions were covered with file-based functions with encoding options and a few special utility functions. 
+
+From the exam perspective, these functions may not be directly asked about in the questions, but this knowledge will be helpful in other scenario-based questions. 
+

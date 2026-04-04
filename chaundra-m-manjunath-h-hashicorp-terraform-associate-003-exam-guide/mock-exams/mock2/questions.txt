@@ -1,0 +1,637 @@
+# MOCK2 - Questions
+
+### Question 1
+
+What are the benefits of Infrastructure as Code (IaC)? (Choose THREE)
+
+- A. IaC takes care of High Availability (HA) and Disaster Recovery (DR)
+- B. It reduces human error
+- C. It increases operational efficiency
+- D. You cannot use IaC with Version Control Systems (VCSs)
+- E. Repeatability
+
+---
+
+### Question 2
+
+Terraform can only be used within a cloud environment and does not work on-premises. True or False?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 3
+
+Which of the following features of Terraform is true when compared to AWS CloudFormation and Azure Resource Manager (ARM)?
+
+- A. Terraform configuration works only with HCL format
+- B. Terraform needs either AWS or Azure to store the state file
+- C. Terraform is cloud agnostic
+- D. Functions are not supported in Terraform, unlike in CloudFormation or ARM
+
+---
+
+### Question 4
+
+You have been asked to use Terraform to manage the infrastructure across AWS, Azure, and GCP. You want to get started by initializing the required provider plugins for each cloud platform. Which of the following code snippets will help you to do this job?
+OPTION_A:
+
+- A. A
+- B. B
+- C. C
+- D. D
+
+---
+
+### Question 5
+
+HashiCorp strongly recommends that you use provisioners when you want to run scripts on newly launched resources or to run scripts locally. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 6
+
+Which of the following options is not a Terraform provisioner? Select TWO.
+
+- A. File
+- B. user-data
+- C. remote-exec
+- D. local-exec
+- E. locals
+
+---
+
+### Question 7
+
+You have to deploy an EC2 instance with the same configuration in two different regions using a single configuration file. Which of the following options does it efficiently?
+
+- A. Use multiple terraform  blocks, each of which has a different set of credentials
+- B. Create another folder and copy the configuration file, configure the AWS credentials for the new region, and create the required resources
+- C. Use the alias option of the provider block to create two provider configurations and use them to create resources in different regions
+- D. None of the above
+
+---
+
+### Question 8
+
+One of your colleagues has created a database server manually that has been used for some time. You want to bring it under Terraform. What is the easiest way to bring the database server under Terraform's management?
+
+- A. You will delete the database server and create the new database server using Terraform
+- B. You will create a backup of the database server, delete the database server, create a new database server using Terraform, and import the data to the database server
+- C. You will write the Terraform configuration for the database resource and run the terraform import command for the specific resource to import the database server into Terraform
+- D. Terraform cannot import existing resources
+
+---
+
+### Question 9
+
+You want to get all the attributes about a resource that has been provisioned by Terraform. Which option helps us achieve this?
+
+- A. terraform state list
+- B. terraform state show RESOURCE-ADDRESS
+- C. terraform output RESOURCE-NAME
+- D. Log in to the console of the platform and get all the attributes of the resource
+
+---
+
+### Question 10
+
+You are having problems with Terraform runs and you want to dig further to troubleshoot the issue. You have enabled verbose logging using the TF_LOG environment variable. You want to store the logs  in a file and share them with the team. How would you do this?
+
+- A. Create a new environment variable to store the logs TF_LOG_PATH=/troubleshootlog
+- B. Create a new environment variable to store the logs TF_LOG_FILE=/troubleshootlog
+- C. Copy the logs that are displayed on the CLI, paste them into a text editor, and share them with the team
+- D. Create a new path by using a new environment variable TF_DATA_DIR=~/terraform/newfolder/
+
+---
+
+### Question 11
+
+You want to enable the most detailed logging option available with Terraform. Which of the following options is most verbose?
+
+- A. DEBUG
+- B. INFO
+- C. WARN
+- D. TRACE
+- E. ERROR
+
+---
+
+### Question 12
+
+Apart from terraform init, we can also use the terraform get command to download and update the modules mentioned in the root module.  True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 13
+
+Which commands will help you upgrade the modules to the latest version? Select TWO.
+
+- A. terraform init -upgrade
+- B. terraform init -update
+- C. terraform get -update
+- D. terraform get -latest
+- E. terraform pull -latest
+
+---
+
+### Question 14
+
+Which meta-argument is available for modules?
+
+- A. count
+- B. for_each
+- C. depends_on
+- D. All of the above
+
+---
+
+### Question 15
+
+Which of the following code snippets uses the local module to create a VPC?
+OPTION_A:
+
+- A. A
+- B. B
+- C. C
+- D. D
+
+---
+
+### Question 16
+
+Which of the following is a benefit of using modules?
+
+- A. Reduces duplication of code
+- B. Self service
+- C. Encapsulates configuration
+- D. Provides consistency
+- E. All of the above
+
+---
+
+### Question 17
+
+Which of the following statements are true about modules? Choose THREE.
+
+- A. Root modules can call child modules
+- B. Child modules can call root modules
+- C. Child modules can be called only once in the root module
+- D. Child modules can be called multiple times in the root module
+- E. Different root modules can be called from the child module
+- F. Different child modules can be called from the root module
+
+---
+
+### Question 18
+
+Which of the following arguments within the module block is mandatory?
+
+- A. for_each
+- B. version
+- C. variables
+- D. source
+- E. count
+
+---
+
+### Question 19
+
+You are using a public module to create the production VPC setup and want to lock the version to make sure the new versions of the module do not automatically get downloaded in production. Which of the following snippets will lock the version to a specific one?
+OPTION_A:
+
+- A. A
+- B. B
+- C. C
+- D. D
+
+---
+
+### Question 20
+
+The terraform graph command produces descriptions of the relationships between objects in a Terraform configuration. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 21
+
+What is the terraform console command used for?
+
+- A. To evaluate expressions
+- B. To experiment with in-built functions when the state is empty
+- C. To test interpolations before using them in configurations
+- D. All of the above
+
+---
+
+### Question 22
+
+What are the steps involved in the core Terraform workflow? Select THREE.
+
+- A. Write
+- B. Format
+- C. Validate
+- D. Plan
+- E. Apply
+- F. Destroy
+
+---
+
+### Question 23
+
+What does the terraform init command do? (Choose FOUR)
+
+- A. Downloads all the plugins available for Terraform and stores them locally
+- B. Downloads only those provider plugins that have been defined in the configuration files in the current directory
+- C. The backend is initialized to store the Terraform state file
+- D. Stores the terraformtfstate file in the cloud automatically
+- E. Searches for module blocks in the configuration files and retrieves these modules from the source location
+- F. Stores the downloaded provider plugins and modules in the terraform/ directory in the current working directory
+
+---
+
+### Question 24
+
+When you run terraform init, the modules referenced in the Terraform code get downloaded and stored locally. Which location do they get stored in?
+
+- A. Under the .terraform/ folder in the current working directory
+- B. Cached in the memory for faster access
+- C. Under the home directory of the user who is executing the commands
+- D. In a newly created folder named modules in the root directory of the operating system
+
+---
+
+### Question 25
+
+The terraform validate command has to be run even before terraform init to validate the syntax of the configuration files. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 26
+
+You have written the Terraform code and run terraform validate. What does this do? Select TWO.
+
+- A. It validates the configuration files in a directory
+- B. It accesses the remote state and provider APIs to confirm the code runs successfully
+- C. It verifies the reusable modules, including the correctness of the attribute names and value types
+- D. It creates resources specified in the code to validate that they get created without any issues and then deletes them
+
+---
+
+### Question 27
+
+Terraform is used by your CloudOps team to manage your entire environment. The plan and apply commands take a long time to complete. Which of the following options can reduce the time taken by these commands?
+
+- A. terraform plan -skip-checks and terraform apply -skip-checks
+- B. terraform plan -lock-timeout=20s and terraform apply -lock-timeout=20s
+- C. terraform plan and terraform apply -auto-approve
+- D. terraform plan -parallelism=20 and terraform apply -parallelism=20
+
+---
+
+### Question 28
+
+What does terraform plan do? Select THREE.
+
+- A. Scans the configuration of all the files with the .tf extension in the current working directory
+- B. Scans the configuration of all the files with the .json extension in the current working directory
+- C. Recurses through the subdirectory to scan the configuration files for .tf files
+- D. Recurses through the subdirectory to scan the configuration files for .json files
+- E. Creates a plan and shows what resources will be created
+- F. Creates a plan and shows what resources will be created, with a prompt asking the user to confirm whether the resources have to be created
+
+---
+
+### Question 29
+
+For a newly created configuration file, terraform apply will throw an error if you run it before running terraform init. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 30
+
+Which of the following is NOT done by terraform apply?
+
+- A. Creating new infrastructure
+- B. Updating existing infrastructure
+- C. Deleting the resources
+- D. Formatting the content of configuration files
+
+---
+
+### Question 31
+
+A temporary test environment that was spun up needs to be terminated. Developers have requested you retain the database server and delete the rest of the resources in the setup. Which of the following options can do the job via Terraform? Select TWO.
+
+- A. Remove the code of all the resources except the database server and run terraform apply.
+- B. Remove the database server from the state file (terraform state rm RESOURCE-ADDRESS) and run terraform destroy.
+- C. Take a manual backup of the database server, run terraform destroy, and recreate the DB server along with the data.
+- D. Delete all the resources manually and retain only the database server.
+
+---
+
+### Question 32
+
+You want to selectively delete one of the resources created by Terraform using a module. Which of the following options can help you delete the resource without impacting other resources?
+
+- A. terraform destroy --auto-approve
+- B. terraform destroy -target=resource.name
+- C. terraform destroy -target=module.name
+- D. terraform apply -destroy
+
+---
+
+### Question 33
+
+You have many team members writing Terraform code and creating pull requests for you to merge the code to the main branch. You are not able to quickly go through the code due to a lack of consistency in spacing. What is the easiest way to solve this?
+
+- A. Create a document containing rules around spacing and other syntax. Circulate it with the team.
+- B. Ask the team to run terraform fmt once the code is ready.
+- C. Ask the team to run terraform apply -format to keep the code consistent.
+- D. Use some third-party tool to reformat the Terraform code to make sure the code is consistent.
+
+---
+
+### Question 34
+
+The Terraform state filename cannot be anything other than terraform.tfstate irrespective of the backend used. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 35
+
+Which of the following points are true about the state file? Choose THREE.
+
+- A. All Terraform backends that store the files have state locking by default.
+- B. When using Terraform Community Edition, you are responsible for maintaining a state file as the source of truth for your cloud infrastructure.
+- C. HCP Terraform offers secure remote state storage, making it easier to collaborate on infrastructure development.
+- D. The Terraform state file always uses the remote backend.
+- E. You can migrate the state file from one backend to another backend by using the terraform init -migrate-state command.
+
+---
+
+### Question 36
+
+You have been managing infrastructure using Terraform and the state file is stored in the local filesystem. You accidentally delete the state file and the backup state file. What happens when you run terraform apply now?
+
+- A. It throws an error saying there is no state file.
+- B. A new state file is created along with the details of all the previously managed resources.
+- C. It creates all the resources again.
+- D. Terraform needs to be reinitialized, upon which it will repopulate the state file.
+
+---
+
+### Question 37
+
+You get the following error when you run terraform plan. How do you resolve this error?  Error: Error locking state: Error acquiring the state lock: ConditionalCheckFailedException: The conditional request failed
+
+- A. terraform apply -auto-approve
+- B. terraform init
+- C. terraform force-unlock LOCK-ID
+- D. terraform plan -force
+
+---
+
+### Question 38
+
+How can you apply a Terraform configuration with a specific variable using terraform apply? Select FOUR.
+
+- A. terraform apply -var="VARIABLE_NAME=VARIABLE_VALUE".
+- B. If the variable and value are stored in the dev.tfvars file in the same working directory, run terraform apply -var-file="dev.tfvars".
+- C. If the variable and value are stored in the dev.tfvars file in the same working directory, run terraform apply -variable-file="dev.tfvars".
+- D. Update the terraform.tfvars file with the variable name and value. Then run terraform apply.
+- E. Export TF_VAR_variable_name=variable-value.
+- F. Export VAR_variable_name=variable-value.
+
+---
+
+### Question 39
+
+
+
+- A. ami-123.
+- B. ami-567.
+- C. It prompts the user for the ami.
+- D. None of the above.
+
+---
+
+### Question 40
+
+Which of the following features of Terraform makes Terraform config files reusable?
+
+- A. Input variables
+- B. Output variables
+- C. Terraform providers
+- D. Terraform plugins
+
+---
+
+### Question 41
+
+Which of the following variable types is INVALID in Terraform?
+
+- A. object
+- B. strings
+- C. bool
+- D. tuple
+- E. locals
+
+---
+
+### Question 42
+
+Which output code will help you access the ID of an instance with the name instance-2?
+
+- A. output "instance-x" {value = aws_instance.test_ec2_instances.id.2}
+- B. output "instance-y" {value = aws_instance.test_ec2_instances[1].id}
+- C. output "instance-z" {value = aws_instance.test_ec2_instances[2].id}
+- D. output "instance-m" {value = aws_instance.test_ec2_instances[3].id}
+
+---
+
+### Question 43
+
+Why would you use Terraform locals instead of Terraform variables?
+
+- A. Locals can help secure a value by encrypting it.
+- B. You can assign an expression to a local that evaluates to a value. This can be used at multiple locations in the code.
+- C. Locals are supported in HCP Terraform while variables are supported in Terraform Community Edition.
+- D. “Local” is an alias for Terraform variables.
+
+---
+
+### Question 44
+
+What happens when you set the variables as sensitive in the Terraform configuration? Select TWO.
+
+- A. It prevents Terraform from showing its value in the plan or apply output.
+- B. Terraform encrypts the data when the sensitive option is set.
+- C. Terraform will still record sensitive values in the state in plain text and they can be accessed.
+- D. Terraform locks the variables in the state file and only authorized people can see or update variables.
+
+---
+
+### Question 45
+
+What does the following code do?
+
+- A. It creates a new AMI called web-server-ami and tags it with the name web-server and version 9.
+- B. It requests Terraform to read from the aws_ami data source and store the result in web-server-ami, which can later be referred to from the other configuration files.
+- C. It queries AWSs public AMIs and exports the latest AMI ID into our state file to be used later.
+- D. The code has the wrong syntax and will throw an error when it is run.
+
+---
+
+### Question 46
+
+What is the use of data blocks in Terraform?
+
+- A. Data blocks are used when you need to create the object block resources in the cloud.
+- B. Data blocks allow Terraform to use the outputs of CloudFormation to be used in the current configuration.
+- C. Data blocks are used when you need to launch database servers.
+- D. Data blocks allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions.
+
+---
+
+### Question 47
+
+Terraform supports both implicit dependency and explicit dependency. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 48
+
+HCP Terraform manages infrastructure collections with workspaces, which are similar to directories in the Terraform CLI. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 49
+
+Terraform Community Edition does not support the use of a version control system. True or false?
+
+- A. TRUE
+- B. FALSE
+
+---
+
+### Question 50
+
+What are the Terraform editions currently available? Choose THREE.
+
+- A. Terraform Unlimited
+- B. HCP Terraform (Free, Standard, and Plus)
+- C. Terraform Developers Edition
+- D. Terraform Enterprise
+- E. Terraform Community Edition
+
+---
+
+### Question 51
+
+What is required to log in to HCP Terraform?
+
+- A. Username and password
+- B. Access key and secret key
+- C. API key
+- D. SMS/email with a one-time password
+
+---
+
+### Question 52
+
+When you use terraform login to connect to HCP Terraform or Terraform Enterprise, where does the API token get stored?
+
+- A. It gets stored in the credentialstfrcjson file
+- B. It gets stored in the credentialstfstate file
+- C. It is stored only in the memory of the machine where Terraform is run
+- D. A token is used only once and then discarded
+
+---
+
+### Question 53
+
+Which of the following features are available only with Terraform Enterprise and not in HCP Terraform? Select FOUR.
+
+- A. Self-hosted distribution
+- B. Cross-organization registry sharing
+- C. Private registry
+- D. Application-level logging
+- E. Log forwarding
+- F. Policy as code (Sentinel and OPA)
+
+---
+
+### Question 54
+
+Which of the following are imports provided by Terraform to define policy rules while using Sentinel? (Select FOUR.)
+
+- A. tfplan
+- B. tfwrite
+- C. tfconfig
+- D. tfapply
+- E. tfstate
+- F. tfrun
+
+---
+
+### Question 55
+
+Which of the following are not valid enforcement levels in a Sentinel policy? Choose TWO.
+
+- A. Advisory
+- B. Critical
+- C. Soft Mandatory
+- D. Hard Mandatory
+- E. Alert
+
+---
+
+### Question 56
+
+You have been asked to create a module that deploys an entire application  with very minimal code. After developing the code, you want to share it with your team to allow them to use it. You want to make sure only the right people have access to this module. What would be the most efficient way of achieving this?
+
+- A. Publish the module to a private registry of Terraform Cloud and share it with your team members
+- B. Publish the module to the Terraform public registry and share the link to the module with the team
+- C. Use a shared virtual machine on the cloud and store your module there Share the credentials with your team members to let them access the module
+- D. Email the module code to all your team members and ask them to create the same module on their laptops
+
+---
+
+### Question 57
+
+You want to enforce certain policies to implement security best practices. Which of the following policy-as-code frameworks can be utilized with Terraform? Choose TWO.
+
+- A. AWS CloudFormation
+- B. Azure Resource Manager
+- C. Open Policy Agent (OPA)
+- D. Google Deployment Manager
+- E. Sentinel
+
+---
+

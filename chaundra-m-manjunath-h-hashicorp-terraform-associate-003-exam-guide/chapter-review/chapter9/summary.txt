@@ -1,0 +1,9 @@
+Dashboard
+Chapter 9
+Understanding HCP Terraform’s Capabilities
+Summary
+In this chapter, you have learned about the various Terraform editions at your disposal after you decide to go with Terraform for infrastructure management. By now, you should have a good understanding of the shortcomings of Terraform Community Edition, when to move to HCP Terraform/Enterprise, and the additional features of these editions. You also learned how to sign up for HCP Terraform and looked at a few exercises that helped you understand how the workflows work and what the local and remote execution modes are. 
+
+Policy as code is one of the key features that is used to enforce certain policies around costing, best practices, and compliance. You learned how this can be implemented using Sentinel. Toward the end of the chapter, you looked at the unique features of Terraform Enterprise. 
+
+In the next chapter, you will look at some miscellaneous topics that have not been covered so far. 

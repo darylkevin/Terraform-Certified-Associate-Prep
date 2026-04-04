@@ -1,0 +1,15 @@
+**Question 1**
+
+Option A is correct as the AWS CloudFormation service helps users create AWS resources in complex configurations. Option B is incorrect since Pulumi is offered as a service by Pulumi Corporation and it is an open source tool. Option C is incorrect because Terraform is an IaC tool offered by a company called HashiCorp. Option D is incorrect since Ansible is primarily a configuration management tool and not an IaC tool.
+
+---
+
+**Question 2**
+
+Option C is correct because there is no valid section called Services in the template. Option A is incorrect because the Resources section details AWS components that will be created/updated when the stack is run. Option B is incorrect because Mappings is used to map the user inputs to the output values. Option D is incorrect because Outputs is generally used to export the information about the resources created by the template.
+
+---
+
+**Question 3**
+
+Option A is correct because IaC uses the declarative approach, unlike programming languages that use the imperative approach. Option C is correct because IaC always needs to be version-controlled to revert if there are any breaking changes and can restore previous snapshots of the code that were working fine earlier. Option D is correct because IaC tools exhibit idempotent behavior that produces the same result irrespective of the number of executions. Option B is incorrect because programming languages usually use the imperative approach with detailed instructions on how the resources need to be created.
