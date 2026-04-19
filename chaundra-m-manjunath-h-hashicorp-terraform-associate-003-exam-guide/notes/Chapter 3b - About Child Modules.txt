@@ -1,0 +1,60 @@
+In Terraform, a "module" is quite literally just a directory (folder) containing one or more .tf (or .tf.json) files. That is all it is.
+
+my-terraform-project/       <-- This folder is your ROOT module
+├── main.tf                 (Calls the child modules, defines providers)
+├── variables.tf            (Inputs for the root module)
+├── outputs.tf              (Final outputs printed to your screen)
+│
+└── modules/                (A folder just to keep things organized)
+    │
+    ├── database/           <-- This folder is a CHILD module
+    │   ├── main.tf         (The actual database resources)
+    │   ├── variables.tf    (Inputs the database needs from the root)
+    │   └── outputs.tf      (Outputs the database passes back to the root)
+    │
+    └── web-server/         <-- This folder is another CHILD module
+        ├── main.tf         
+        ├── variables.tf    
+        ├── outputs.tf      
+        └── user_data.sh    (You can keep other related files here too!)
+
+Scope: The "Explicit Only" Rule:
+- The most important rule in Terraform is: Scope is isolated.
+- No Automatic Data Flow: Just because you define a variable or a resource in your root module does not mean your child module can see it.
+- Explicit Communication: To get information from the parent to the child (or vice versa), you must explicitly define how that data is passed.
+
+Passing Data Into a Module (Variables)To send data to a child module, the child must "ask" for it (using variable), and the parent must "give" it (inside the module block).Child Module (modules/database/variables.tf):Terraformvariable "db_size" {
+  type        = string
+  description = "The size of the database"
+}
+Root Module (main.tf):Terraformmodule "my_database" {
+  source  = "./modules/database"
+  db_size = "large" # Explicitly passing data to the child
+}
+Retrieving Data From a Module (Outputs)To get data back from a child module, the child must define an output, which the parent can then reference.Child Module (modules/database/outputs.tf):Terraformoutput "database_url" {
+  value = aws_db_instance.main.endpoint
+}
+Root Module (main.tf):Terraformresource "aws_route53_record" "db_dns" {
+  # Referencing the output: module.<module_name>.<output_name>
+  records = [module.my_database.database_url]
+}
+3. What are locals?locals are internal variables used for processing, transforming, or calculating data within a single module.While variables are for input (data coming from outside), locals are for logic (data created inside).Why use locals?DRY (Don't Repeat Yourself): If you need to construct a complex string or map in three different places, define it once in a locals block and reference the name.Readability: Break down complex logic into named, understandable chunks.Consistency: Ensure that standardized naming conventions or tag sets are applied uniformly across your resources.How to use localsYou define them in a locals {} block and reference them using local.<name>.Terraformlocals {
+  # A local calculation
+  project_name = "myapp"
+  environment  = "prod"
+  
+  # Combining variables into a standardized name
+  full_resource_name = "${local.environment}-${local.project_name}-server"
+  
+  # A standardized map of tags
+  common_tags = {
+    Project = local.project_name
+    Env     = local.environment
+  }
+}
+
+resource "aws_instance" "web" {
+  tags = local.common_tags
+  name = local.full_resource_name
+}
+Summary Cheat SheetConceptPurposeHow to referenceVariableInput data provided from the outside.var.variable_nameOutputData exposed to the outside world.module.module_name.output_nameLocalInternal, processed, or calculated data.local.local_nameRemember: Terraform modules are just a way to organize your files. Treat every module as a "black box" that only knows about the inputs you give it and the outputs it gives back.
