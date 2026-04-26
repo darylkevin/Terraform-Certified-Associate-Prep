@@ -112,7 +112,7 @@ Variables (variable {}):
 - can be set inline (terraform apply -var='az_list=["us-east-1a","us-east-1b"]')
 - can be defined in `.tfvars` or `.tfvars.json` file, then referenced with -var-file=myvar.tfvars
 - can be looked up from env with TF_VAR_<variable_name>.
-- Precedence: env, .tfvars, .tfvars.json, *.auto.tfvars or *.auto.tfvars.json, `-var` and `-var-file`
+- Precedence (lowest to highest): env, .tfvars, .tfvars.json, *.auto.tfvars or *.auto.tfvars.json, `-var` and `-var-file`
 - Referenced with var.<NAME>
 
 Output values (output {}):

@@ -1,0 +1,48 @@
+terraform state [subcommand] <state_options> <ARGUMENTS>
+- to manage state externally and make some adjustments to accomodate changes made outside Terraform
+
+terraform state list <options> <RESOURCE_ADDRESS>
+- -state = path to state file, defaults to .tfstate in pwd
+- -id = filter by id
+- if resource_address is specified, will only list the resource on that aeddress
+- resource address: resource_type.resource_name
+
+terraform state show RESOURCE_ADDRESS
+- RESOURCE_ADDRESS is needed, not optional
+- -state = path to state file, defaults to .tfstate in pwd
+
+terraform state mv <move_options> SOURCE_RESOURCE_ADDRESS SOURCE_DESTINATION_ADDRESS
+- e.g. terraform state mv aws_iam_user.testuser aws_iam_user.preprod_user
+- This is the code before changes:
+resource "aws_iam_user" "test_user" {
+name = "test-aws-user"
+path = "/test/"
+. . .
+}
+This is the code after changes:
+resource "aws_iam_user" "preprod_user" {
+name = "test-aws-user"
+path = "/test/"
+. . .
+}
+- -dry-run= to test before actual changes. Will report all reousrces in the state matching the source address
+
+terraform state rm <remove_options> RESOURCE_ADDRESS
+- to remove (and hence no longer keeping track) of the given resource address
+- hence when doing terraform destroy for example, this resource will not be removed
+- resource needs to be created again to be in sync
+
+terraform state replace=provider FROM_PROVIDER TO_PROVIDER
+- -auto-approve: will not prompt for approval
+
+terraform state pull
+- to retrieve current state
+
+terraform state push <push_options> PATH_TO_REMOTE_BACKEND
+- manually uploads a local state file
+- Terraform automatically checks for changes that are secure.
+- -force - disable checks but not recommended
+- OVERWRITES EXISTING REMOTE STATE WITH LOCAL VERSION, need to be used very carefully
+
+
+
