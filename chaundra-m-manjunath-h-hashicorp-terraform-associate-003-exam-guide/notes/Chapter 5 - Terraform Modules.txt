@@ -1,0 +1,42 @@
+Based on entrypoint (where user executes `terraform xxx` command)
+- Root module -> variables.tf as the real values to be passed for the child module
+- Child module (subfolders) -> varibles.tf as a template for input type (parameterization)
+
+Based on where the configurations file are stored/installed
+- Remote module
+- Local module
+
+Based on how they are published:
+- Private module (e.g. HCP Terraform private registry)
+- Public module (e.g. Terraform Registry)
+
+When people talk about modules - it typically means a child module (and remote module like those in aws)
+Do `terraform init` - will download the modules if its a remote module, otherwise modules.json will be created in the local filesystem. Can also be used to detach the module after you delete the module folder
+Do `terraform init -upgrade` to enable Terraform to download the latest changes
+Always aim for verified modules as they are reviewed by HashiCorp directly for compatibility with the Terraform core
+
+Child modules inside child modules -> nested module
+
+Use relative path to define local child module (as absolute path will only work in your PC!)
+
+Generic syntax:
+module "vpc <this is the local name>" {
+    source <mandatory> = "../vpc-module/" # If remote: <namespace>/<name>/<provider>, e.g. hashicorp/consul/aws. If private, begins with terraform-<provider>-<name>
+    version = "version number"
+    # To target specific tag, branch, SHA-1 hash. (e.g. git::http://host/repo.git?ref=<branch/tag/commithash>)
+    ...
+}
+
+Remote modules: from Terraform Registry, VCS (GitHub, Gitlab, Bitbucket), HTTL URLs, S3, GCS buckets, etc.
+
+Key parameters to verify a module in Terraform Registry:
+- how old
+- how active (how many downloads in the last week or month)
+- versions
+- is it getting frequent commits (in the case of repository basis), number of contributions, stars, pull requests, issues, etc.
+
+Remeber that all values in child modules cannot be used by the root modules except if they are explicitly outputted (preferably in outputs.tf)
+
+You can also make a customized module on top of a module to create another abstraction that would cater to that customization needs.
+
+Easily generate terraform docs here: https://terraform-docs.io/

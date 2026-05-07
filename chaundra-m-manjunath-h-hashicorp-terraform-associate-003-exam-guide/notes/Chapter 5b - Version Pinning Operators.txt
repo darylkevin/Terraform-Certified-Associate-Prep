@@ -1,0 +1,9 @@
+Terraform supports various operators:
+
+=
+!=
+>
+>=
+<
+<=
+~> pessimistic constraint - only allow patch upgrades (fixed.fixed.*) if defined as major-minor-patch, otherwise its the right most (e.g. fixed.*)
