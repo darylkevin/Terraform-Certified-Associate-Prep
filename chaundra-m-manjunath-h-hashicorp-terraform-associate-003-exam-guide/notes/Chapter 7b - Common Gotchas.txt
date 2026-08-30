@@ -1,0 +1,16 @@
+Common Gotchas
+1. Avoid lists where possible
+- Terraform uses index to map
+- Meaning ['a', 'b', 'c'] is mapped to index
+- Meaning if its changed to ['a', 'c'], Terraform will do: DELETE index[2] and rename index[1] from 'b' to 'c'
+- Imagine a b c are IAM users with their own permissions, then this operation will be fatal
+
+Solution: Use for_each = toset(['a', 'b', 'c']) - it uses value as reference
+
+2. Be careful when using `-target`
+- `-target` will not only target the resource but also its dependencies
+- Therefore, if we have aws_instance which has dependency to aws_eip, then `terraform destroy -target="aws_instance.test"` will delete both the instance AND the elastic IP.
+
+
+Also remember: 
+- Pin versions of modules, providers and terraform version. Prevent compatibility issue during `terraform init -upgrade`

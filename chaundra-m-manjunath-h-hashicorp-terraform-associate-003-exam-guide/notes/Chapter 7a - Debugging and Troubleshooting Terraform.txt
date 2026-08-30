@@ -1,0 +1,78 @@
+Configuration Errors
+- override.tf: resource written in this file will overwrite the configuration in main terraform files
+- `terraform validate`: 
+    - syntactically checks code correctness defined in the configuration file. Does not access any remote services/provider APIs
+    - Stops validating once it catches an error
+
+Variable-related Issues
+- Type Constraint
+    - you can enfore typing using `type` argument in the variable block
+    - `terraform run` will fail if there are incorrect type in the input variable values
+
+- Input Validation
+    - can add a `validation { condition = ... error_mesage = ... }` block inside the variable block
+    - this will check and all conditions need to return TRUE to pass the validation, otherwise error_message will be thrown
+
+Variable Precedence (low to high)
+- env var (LOWEST)
+- terraform.tfvars
+- terraform.tfvars.json
+- *.auto.tfvars or *.auto.tfvars.json (alphabetic precendence)
+- -var=... or -var-file=... (HIGHEST)
+
+State-related Issues
+- Configuration Drift (Most Common)
+    - Users may go to management console directly and apply changes there
+    - To solve this you can either roll back and change via Terraform later time, or use `terraform import` <resource.id> then fill in the resource block until the plan show zero changes
+    - If you delete the resources manually, you can remove this resource selectively from the state file to make Terraform untrack it (`terraform state rm resource`), or just delete the relevant code.
+
+- State Conflict
+    - Terraform safeguards parallel changes using state locks
+    - This means only 1 concurrent change can be applied
+    - You can encounter state lock during the following:
+        - Multiple people doing terraform apply
+        - Interrupted terraform apply
+    - Can do `terraform force-unlock ID` - then put the ID: `terraform force-unlock a2324f3-x872-09fs-b216-g87ed071284`
+
+Migrating the State from One Backend to Another
+- Terraform supports migration between backends or local to remote backend
+- First backup terraform.tfstate, then update the backend configuration to the new backend
+- Then do `terraform init -migrate-state` - type `yes` if you want to copy the state to the new backend
+- State is now migrated to the new backend
+
+Core and Provider-related Issues
+- `TF_LOG` (all Terraform components)
+- `TF_LOG_CORE` (only Terraform core binary)
+- `TF_LOG_PROVIDER` (all providers and SDKs)
+- `TF_LOG_PATH` (stores these logs in a file, good practice to not spam the console out)
+- Log level: TRACE, DEBUG, INFO, WARN, ERROR
+
+Module-related Issues:
+1. Check whether root module is using the local child module or remote child module
+2. Check mandatory input variables expected by the child module
+3. Check the outputs exposed by the child module
+
+Missing Features:
+- Pull latest version if using public modules, otherwise raise issue lol
+- Can also go hardcore by forking and implement the feature yourself
+
+Output-related Issues
+- Make sure to have outputs in child module if you want to retrieve the data in the root module
+
+Unsopported Argument
+- Particular argument is not defined in child module
+
+Version-related Issues
+- Highly recommended to lock the versions of modules
+- Always test the latest version of module before rolling it out to production
+- Can update periodically whenever deemed safe
+
+Taking Help from the Forum/Bug Reporting:
+- https://discuss.hashicorp.com/c/terraform-core/27
+- https://discuss.hashicorp.com/t/guide-to-asking-for-help-in-this-forum/48571
+- Once you eliminate all the above, you can raise GitHub issue:
+    - Enable TRACE logging
+    - Run `terraform refresh` which generates the logs and stores them in the `logs.txt` file
+    - You need to confirm if its Terraform core issue or Terraform Provider issue
+    - If its Terraform Provider, you should see the ERROR log to contain `provider-terraform-<PROVIDER-NAME>`
+    - Make sure to remove any confidential information that may be present in the logs

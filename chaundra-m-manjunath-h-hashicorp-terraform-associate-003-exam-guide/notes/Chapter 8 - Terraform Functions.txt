@@ -1,0 +1,266 @@
+Terraform Functions
+FUNCTION_NAME(argument-1, argument-2, ..., argument-n)
+
+To try out: use `terraform console`
+
+1. Numeric Functions
+- abs(-5) = 5
+- ceil(10.4) = 11
+- floor(8.8) = 8
+- max(10, 59, 23, 68) = 68 | max([10, 59, 23, 68]...) = 68 # Here the three dots are REQUIRED if arg is list
+- min(10, 59, 23, 68) = 10 | min([10, 59, 23, 68]...) = 10 # Here the three dots are REQUIRED if arg is list
+- pow(17, 0) = 1
+- log (8, 2) = 3
+- signum(34) = 1 (positive) | signum(0) = 0 (zero) | signum(-11) = -1 (negative)
+- parseint(STR, BASE) - base here can only bet between 2 and 62 inclusive. parseint("10110", 2) = 22 | parseint("EDA1", 16) = 60833
+
+2. String Functions
+- split("-", "test-dev-prod-") = tolist(["test", "dev", "prod", ""])
+- join("-", ["h", "e", "l", "l", "o"]) = "h-e-l-l-o" | - join("", ["h", "e", "l", "l", "o"]) = "hello"
+- endswith("test-app", "app") = true | endswith("terraform-function", "func") = false
+- startswith("test-app", "test") = true | startswith("terraform-function", "test") = false
+- chomp("hello   \n\n") = "hello   " <-- dumps newline (\n)
+- substr("Adam Williamson", 5, 7) = "William" <-- note that the start index starts at 0, not 1. The length includes the end
+- strrev("olleh") = "hello" <-- reverses
+- lower("Language") = "language"
+- upper("doCuMEntZ") = "DOCUMENTZ"
+- trim("football", "fl") = "ootba" <-- removes all chars in remove-chars (arg 2)
+- trimprefix("bridge", "b") = "ridge" | "trimsuffix("baseball", "ball") = "base" <-- prefix: front. suffix: back
+- trimspace("\n\r test string\n") = "test string" <-- removes TRAILING spaces and (\n, \r, \t, \\)
+- indent(2, "[\n test-line-1,\n test-line-2,\n]"): -> indent by 2 spaces
+    ```
+    <<EOT
+    [
+            test-line-1,
+            test-line-2,
+    ]
+    ```
+    - replace("This is a test string", " ", "-") = "This-is-a-test-string" | replace("There are ten players, "/t.*n/", "10") = "There are 10 players" <-- /.../ takes regex
+    - strcontains("The game is on", "is") = true | strcontains("Apple is Red", "white") = false
+    - title("this is amazing") = "This Is Amazing" <-- every word!
+    - format:
+    ```
+    %s: For strings
+    %d: For decimal
+    %b: For binary representation
+    %f: For fraction (float)
+
+    format("%s has won the match", "Brazil") > "Brazil has won the match"
+    format ("Each team has %d players", 11)
+    > "Each team has 11 players"
+    format("The value of PI is %.2f", 3.14)
+    > "The value of PI is 3.14"
+    format ("Binary value of 2 is %b", 2) > "Binary value of 2 is 10"
+    ```
+- formatlist("%s is a vowel", ["a", "e", "i", "o", "u"]) = tolist([
+    "a is a vowel",
+    "e is a vowel",
+    "i is a vowel",
+    "o is a vowel",
+    "u is a vowel",
+])
+- regex("\\d\\d", "1234abc5678") = 12 | regex("[a-z", "1234a5678"]) = "a" | regex(regular-expression, input-string)
+- regexall("[a-z]+", "ab123cd") = tolist(["ab", "cd",]) <-- returns all hits | c.f. regex("[a-z]+", "ab123cd") will only return "ab"
+
+3. Date and Time Functions
+- timestamp() = "2026-08-12T03:26:48Z" | UTC RFC3339 "YYYY-MM-DDTHH:MM:SSZ"
+- formatdate("DD-MM-YYYY", timestamp()) | "12-08-2026"
+- plantimestamp() | same as timestamp(), but updates during the plan phase. Purpose is to validate time-sensitive values. Cant be used in terraform console
+- timeadd(timestamp(), "4h") | Move forward +4h. Can do negatives as well
+- timecmp(timestamp(), timestamp()) | -1 if less than, 0 if equal, 1 if greater | timestamp1 compared to timestamp2
+
+4. Collection Functions
+- alltrue([true, true]) = true | alltrue([true, false]) = false
+- anytrue([true, false]) = true
+- chunklist(["a", "b", "c", "d", "e"], 2) | Meaning create seperate list for each chunk size (2)
+    ```
+        [
+            ["a", "b"],
+            ["c", "d"],
+            ["e"]
+        ]
+    ```
+- coalesce("", "", null, "a") = "a" | Will take first input that is not null and not empty string
+- coalescelist([], [1, "a"], ["a", "b"]) = [1, "a"] | Same as coalesce except each element has to be either list or tuple
+- compact(["a", "b", "", null, ""c"]) = ["a", "b", "c"] | Returns a list without any empty or null element
+- concat(["1", "2"], ["3"], [4, 5]) = ["1", "2", "3", 4, 5] | Returns a fully concatenated list or tuple
+- contains(["1", "2"], "2") = true
+- distinct(["1", "11", "1", "111", "11"]) = ["1", "11", "111"]
+- element(["1", "11", "111"], 1) = "11" | Retrieves index[1] = "11". If overflow, goes back to index[0]. Can do negatives as well
+- flatten([["a", "b", "c"], ["d", ["e", "f"]]]) = ["a", "b", "c", "d", "e", "f"] | Like concat except it also flattens out nested lists
+- keys({one=1, two=2, three=3}) = ["one", "three", "two"] | values({one=1, two=2, three=3}) = [1, 3, 2] => NOTE! the results are presented lexicographically (alphabetically), not preserving the order of the dict itself
+- index(["a", "b", "c"], "a") = 0 | Inverse of element basically
+- length(["a", "b", "c"]) = 3
+- lookup({one=1, two=2, three=3}, "two") = 2
+- matchkeys(["ec2", "lambda", "dynamodb"], ["server", "serverless", "serverless"], ["serverless"]) = ["lambda", "dynamodb"] | matchkeys(valuelist, keylist, searchvalue)
+- merge({a=1, b=2, c=3}, {b=4}, {d=5}) = {"a" = 1, "b" = 4, "c" = 3, "d" = 5} | only latest "b" is saved, merge maps (dicts)
+- one([]) = null | one(["1"]) = "1" | for safety checks when an optional value is expected (either null or returned one value)
+- range(3) = [0, 1, 2] | range(11, 15) = [11, 12, 13, 14] | range(2, 10, 2) = [2, 4, 6, 8]
+- reverse([1, 2]) = [2, 1]
+
+5. Set Functions
+- setintersection(["adam", "bob"],["bob", "chris"]) = ["bob"]
+- setproduct(["adam"], ["1", "2"]) = [["adam", "1"], ["adam", "2"]] | can even go to multiple lists
+- setunion(["adam", "bob"],["bob", "chris"]) = ["adam", "bob", "chris"]
+- setsubstract(["adam", "bob"], ["bob", "chris"]) = ["adam"]
+- slice([11, 22, 33, 44, 55], 1, 4) = [22, 33, 44] | end index not included
+- sort(["23", "12", "44", "09", "66"] = ["09", "12", "23", "44", "66"])
+- sum([11, 22, 33]) = 66
+- transpose({"s3" = ["aws", "service"]}) = {"aws": ["s3"], "service": ["s3"]}
+- zipmap(["a"], ["1"]) = {"a" = "1"} | zipmap(["a", "b"], ["1", "2"]) = {"a" = "1", "b" = "2"} | arg1 length has to be same as arg2 length, otherwise error
+
+6. Type Conversion Functions
+- can(anytrue([true, false])) = true | can(one([1, 2])) = false | Basically validates function outputs, false if it will return error
+- sensitive() and nonsensitive()  | Masking will be done for all sensitive(), when nonsensitive() output is called, it will only reveals nonsensitive() values
+- try(one([1,2], ["1", "2"], [])) = ["1", "2"] | will return first index that is valid, which is ["1", "2"]
+- type(["1", "2"]) = tuple([string, string]) | terraform will report it as its native, un-converted structural form - hence reporting tuple, not list, even though they are the same type. They could be converted safely into a list though.
+- tobool("true") = true
+- tonumber("23") = 23
+- tostring(100) = "100"
+- toset(["1", "2", "3", "2"]) = ["1", "2", "3"]
+- tomap({"one" = 1, "two" = 2}) = {"one" = 1, "two" = 2}
+- tolist(["a", "b", 1, true]) = ["a", "b", 1, true]
+
+7. Filesystem Functions
+- abspath("<relative-path>") = <absolute-path> | abspath("official-terraform-docs/learn-terraform-versions/terraform.tf") = "/home/daryl.kevin/learning/terraform/official-terraform-docs/learn-terraform-versions/terraform.tf"
+- dirname("C:\\Users\\daryl.kevin\\test.txt") = "C:\\Users\\daryl.kevin"
+- basename("C:\\Users\\daryl.kevin\\test.txt") = "test.txt"
+- pathexpand("~") = "C:\\Users\\daryl.kevin" | defaults converts tilde (~) to HOME, if not set then HOMEDRIVE or HOMEPATH, if not set then USERPROFILE
+- file("C:\\Users\\daryl.kevin\\test.txt") = "testfile" | like `cat` command in linux
+- filebase64("C:\\Users\\daryl.kevin\\test.txt") = "testfile" | like `cat | base64` command in linux
+- fileexists("C:\\Users\\daryl.kevin\\test.txt") = true | like `[ -f FILENAME ]` in bash
+- fileset(path, match-pattern)
+    ```
+    Example of using fileset
+
+    locals {
+    shell_scripts = fileset(path.module, "scripts/*.sh")
+    }
+
+    output "found_files" {
+    value = local.shell_scripts
+    }
+
+    found_files = [
+    "scripts/backup.sh",
+    "scripts/setup.sh",
+    ]
+
+    ```
+- templatefile(file-path, template-vars)
+    ```
+    Example of using templatefile
+
+    # vhost.conf.tftpl
+    server {
+        listen 80;
+        server_name ${domain_name};
+        root /var/www/${app_name};
+    }
+
+
+    locals {
+    # Renders the single specific file with the variables provided
+    rendered_nginx_config = templatefile("${path.module}/vhost.conf.tftpl", {
+        domain_name = "example.com"
+        app_name    = "my-web-app"
+    })
+    }
+
+    output "final_config" {
+    value = local.rendered_nginx_config
+    }
+
+    final_config = <<EOT
+    server {
+        listen 80;
+        server_name example.com;
+        root /var/www/my-web-app;
+    }
+    EOT
+
+    ```
+
+8. IP Network Functions (DIFFICULT - More on Chapter 8b)
+- cidrhost("10.0.0.0/8", 2) = "10.0.0.2" | given a network prefix + host number, returns the full host IP address
+- cidrnetmask("172.16.0.0/12") = "255.240.0.0" | converts CIDR prefix -> subnet mask. IPv4 ONLY
+- cidrsubnet("10.0.0.0/16", 8, 1) = "10.0.1.0/24" | cidrsubnet(prefix, newbits, netnum). newbits = how many bits to ADD to prefix (16+8=24), netnum = which subnet (0-indexed)
+- cidrsubnets("10.0.0.0/16", 8, 8, 8) = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"] | like cidrsubnet but returns consecutive subnets in one call. Each newbits arg can differ e.g. cidrsubnets("10.0.0.0/8", 8, 12, 4)
+
+
+9. Encoding Functions
+- base64encode("This is a string") = VGhpcyBpcyBhIHN0cmluZw==
+- base64decode("VGhpcyBpcyBhIHN0cmluZw==") = "This is a string"
+- base64gzip("This is a string") = "H4sIAAAAAAAA/wrJyCxWyCxWSFQoLinKzEsHAAAA//8BAAD//z9jdggQAAAA" | gzip first then encode
+- csvdecode()
+    ```
+    Example of using csvdecode
+
+    locals {
+    # 1. Define raw CSV data (first row will be the key)
+    raw_csv_data = <<EOF
+    username,department,role
+    alice,engineering,developer
+    bob,operations,sysadmin
+    charlie,marketing,manager
+    EOF
+
+    # 2. Decode the CSV into a Terraform list of maps
+    instances = csvdecode(local.raw_csv_data)
+    }
+
+    # 3. Use the decoded data to create resources
+    resource "aws_iam_user" "users" {
+    for_each = { for row in local.instances : row.username => row }
+
+    name = each.value.username
+    tags = {
+        Department = each.value.department
+        Role       = each.value.role
+    }
+
+    [
+        {
+            "username"   = "alice"
+            "department" = "engineering"
+            "role"       = "developer"
+        },
+        {
+            "username"   = "bob"
+            "department" = "operations"
+            "sysadmin"   = "sysadmin"
+        },
+        {
+            "username"   = "charlie"
+            "department" = "marketing"
+            "role"       = "manager"
+        }
+    ]
+
+    ```
+- jsonencode({name = "ec2", env = "prod"}) = "{\"name\":\"ec2\",\"env\":\"prod\"}" | HCL value -> JSON string
+- jsondecode("{\"name\":\"ec2\",\"env\":\"prod\"}") = {name = "ec2", env = "prod"} | JSON string -> HCL value
+- textencodebase64("Hello World", "UTF-8") = "SGVsbG8gV29ybGQ=" | encode text in given charset then base64. Supported: UTF-8, UTF-16-LE, UTF-16-BE
+- textdecodebase64("SGVsbG8gV29ybGQ=", "UTF-8") = "Hello World" | reverse of textencodebase64
+- urlencode("hello world!") = "hello+world%21" | RFC 3986 percent-encoding for URLs
+- yamlencode({name = "ec2", env = "prod"}) = "\"env\": \"prod\"\n\"name\": \"ec2\"\n" | HCL value -> YAML string. NOTE: keys are sorted alphabetically just like keys()/values()
+- yamldecode("name: ec2\nenv: prod\n") = {env = "prod", name = "ec2"} | YAML string -> HCL value
+
+10. Hash and Crypto Functions
+- md5("hello") = "5d41402abc4b2a76b9719d911017c592" | MD5 hash (hex). Not secure, but used for checksums
+- sha1("hello") = "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d" | SHA-1 hash (hex). Also not secure, legacy use
+- sha256("hello") = "2cf24dba5fb0a30e26e83b2ac5b9e29e..." | SHA-256 hash (hex). Secure, most commonly used
+- sha512("hello") = "9b71d224..." | SHA-512 hash (hex). Secure, longer output than sha256
+- bcrypt("hello") = "$2a$10$..." | Bcrypt hash. OUTPUT CHANGES EVERY CALL (has random salt). Will cause diff on every plan!
+- uuid() = "e3d2f1a0-..." | Random UUID v4. Also CHANGES EVERY CALL — same warning as bcrypt
+- uuidv5("dns", "example.com") = "cfbff0d1-9375-5685-968c-48ce8b15ae17" | Deterministic UUID v5. Same inputs = same output. Namespaces: "dns", "url", "oid", "x500"
+- base64sha256("hello") = "LPJNul+wow4m6DsqxbninhsWHBd..." | SHA-256 then base64 encode. Useful for AWS Lambda source_code_hash
+- base64sha512("hello") = "m3HSJA..." | SHA-512 then base64 encode
+- filemd5("/path/to/file") = "d8e8fca..." | MD5 of a file's contents (not the filename)
+- filesha1("/path/to/file") = "a9993e3..." | SHA-1 of a file's contents
+- filesha256("/path/to/file") = "ba7816b..." | SHA-256 of a file's contents
+- filesha512("/path/to/file") = "ddaf35a..." | SHA-512 of a file's contents
+- filebase64sha256("/path/to/file") = "ungWv4..." | SHA-256 of file then base64. Common for Lambda zip deployments
+- filebase64sha512("/path/to/file") = "z4PhNX..." | SHA-512 of file then base64
+- rsadecrypt(ciphertext, private_key) = "decrypted text" | Decrypts RSA-encrypted ciphertext using a PEM private key. Used with aws_key_pair to decrypt Windows EC2 passwords
+

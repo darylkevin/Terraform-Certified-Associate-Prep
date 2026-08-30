@@ -1,0 +1,156 @@
+Miscellaneous Topics
+
+Input Validations
+- Takes place before the `terraform apply` operation
+```
+variable "app_id" {
+    ...
+
+    validation {
+        condition = length(var.app_id) == 9 && substr(var.app_id, 0, 4) == "app-"
+        error_message = "The app_id value must include the prefix \"app-\" and should be 9 characters long."
+    }
+}
+```
+
+Preconditions and Postconditions
+- Takes place before the `terraform apply` operation
+- Needs to be inside `lifecycle` block
+- Precondition: Before creating, updating or reading an object
+- Postcondition: After planning/applying the changes
+- Postcondition: Can use the `self` keyword to inspect attributes
+
+```
+variable "instance_type" {
+  type    = string
+  default = "t2.nano"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-12345678"
+  instance_type = var.instance_type
+
+  lifecycle {
+    precondition {
+      condition     = var.instance_type != "t2.nano"
+      error_message = "The t2.nano instance size is too small for production workloads."
+    }
+  }
+}
+
+```
+
+```
+resource "aws_instance" "web" {
+  ami           = "ami-12345678"
+  instance_type = "t3.micro"
+
+  lifecycle {
+    postcondition {
+      # "self" refers to the enclosing resource block
+      condition     = self.public_ip != ""
+      error_message = "The EC2 instance did not receive a public IP address as expected."
+    }
+  }
+}
+
+```
+
+Check block
+- Not tied to resource lifecycle, just a check
+- If it violates, it will output a warning and the error_message, but `terraform apply` will still go through
+
+Workspaces
+- Useful to use for prefixes (dev-sqs-queue, prod-sqs-queue, etc...)
+- Callable by doing ${terraform.workspace}
+- terraform workspace list, terraform workspace new, terraform workspace select
+- State files are now stored in `terraform.tfstate.d` folder, with each subfolder = workspaces other than default
+
+Dynamic block
+- Fan out blocks from vars (typically from list or map)
+- Cant be applied to meta-argument blocks like `lifecycle` or `provisioner` blocks
+- Equivalent: dynamic "xxx" { content { ... } } = repetitive `xxx` block containing `content` block
+
+```
+List example: 
+resource "aws_security_group" "web_traffic" {
+  name        = "allow-web-traffic"
+  description = "Inbound traffic rules"
+
+  # This replaces 4 individual copy-pasted blocks
+  dynamic "ingress" {
+    for_each = var.ingress_ports
+    
+    content {
+      from_port   = ingress.value  # Accesses the current port number
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+Map example:
+locals {
+  firewall_rules = {
+    "ssh"   = { port = 22,   proto = "tcp" }
+    "http"  = { port = 80,   proto = "tcp" }
+    "dns"   = { port = 53,   proto = "udp" }
+  }
+}
+
+resource "aws_security_group" "advanced_sg" {
+  name = "advanced-rules"
+
+  dynamic "ingress" {
+    for_each = local.firewall_rules
+    iterator = rule # Custom iterator name
+    
+    content {
+      description = rule.key              # "ssh", "http", or "dns"
+      from_port   = rule.value.port       # 22, 80, or 53
+      to_port     = rule.value.port
+      protocol    = rule.value.proto      # "tcp" or "udp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+
+```
+
+Provisioners
+- Like exec to machines to execute some scripts or copy files locally or to the provisioned infrastructure
+- File provisioner (need ssh/winrm access):
+    - `source`, `content`, `destination`. Source and content is mutually exclusive, can only used 1 or the other
+- Local-exec provisioner:
+    - `command`, `working_dir`, `interpreter` (e.g. [/bin/bash, -c]), `environment`, `when`, `quiet`
+- Remote-exec provisioner:
+    - `inline`, `script`, `scripts`. Inline and script and scripts are mutually exclusive, can only used 1 out of 3. For scripts, pass multiple path of the script in a list.
+
+```
+resource "xxx" "yyy" {
+    provisioner "file | local-exec | remote-exec" {
+        ...
+    }
+}
+```
+
+Handling Sensitive Data
+- `local` backend state file: plaintext!
+- `s3` backend: encrypted and only decrypted when Terraform uses it.
+- AWS access keys or admin creds:
+    - provider {}
+    - env vars (recommended)
+    - shared creds/configuration file
+    - container credentials
+    - instance profile credentials
+- Variables:
+    - set `sensitive` = true to mask value
+    - still, TF_VAR_<variable_name> will be plaintext!
+    - even using .tfvars file are also plaintext, maybe you can guard these files to be only accessible to special group of people
+    - OR, use AWS Secret Manager, HashiCorp Vault, or other secret management tools (recommended)
+- Output values:
+    - If you output sensitive vars, outputs will throw error: `Output refers to sensitive values`
+    - You can overcome this by setting the output to be `sensitive` as well
+    - But still it will be stored as plaintext in the state file
+

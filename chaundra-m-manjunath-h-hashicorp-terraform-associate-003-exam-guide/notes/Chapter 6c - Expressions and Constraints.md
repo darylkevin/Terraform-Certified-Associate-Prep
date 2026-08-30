@@ -1,0 +1,118 @@
+# Chapter 6c - Expressions and Constraints
+
+`backend {}` block cannot use expressions.
+
+---
+
+## Data Types
+
+### Primitive
+
+- `string`: `"Hi"`, `"BobWilliams"`, `"dev-team"`
+- `number`: `6`, `10.2`
+- `bool`: `true`, `false`
+
+### Complex
+
+- `list` or `tuple`: `["test", "dev", "prod"]`
+- `set`: unique values that do not have an index
+- `map` or `object`: `{ "environment" = "dev", "department" = "accounting" }`
+- `null`: `null` (Terraform will ignore it)
+
+---
+
+## Operators
+
+- **Arithmetic**: `+` `-` `*` `/` `%` and `-` (negation operator, e.g. `5` to `-5`)
+- **Logical**: `||` `&&` `!` (NOT)
+- **Equality**: `==` `!=`
+- **Comparison**: `<` `<=` `>` `>=`
+
+---
+
+## Conditional
+
+```
+condition ? value_if_true : value_if_false
+```
+
+The condition should return the **same type** for true and false so that Terraform knows the type that will be returned without knowing the condition.
+
+---
+
+## for Expressions
+
+```
+for <element> in <complex_type> : <expression>
+```
+
+**Example:**
+
+```hcl
+vowel_list = ["a", "b", "c", "d", "e"]
+{ for item in vowel_list : item => index(vowel_list, item) }
+```
+
+This will create a map with `key = item` and `value = index_of_that_item`.
+
+---
+
+## splat Expressions
+
+```hcl
+obj_list = [{ "id" = 1, "name" = "a" }, { "id" = 2, "name" = "b" }]
+```
+
+**Normal way:**
+
+```hcl
+[ for obj in obj_list : obj.id ]  # Result: [1, 2]
+```
+
+**Splat way:**
+
+```hcl
+var.obj_list[*].id  # Result: [1, 2]
+```
+
+---
+
+## Type Constraints
+
+- `list` vs `tuple`: list is same type, tuple can be different
+- `any` type: used if it is not decided yet — **not recommended**
+
+```hcl
+variable "test_variable" {
+    type = any
+}
+```
+
+- `optional`: prevent Terraform from throwing error if type is not inferred
+
+```hcl
+variable "optional_var_object" {
+    type = object({
+        name       = string             # REQUIRED
+        age        = number             # REQUIRED
+        birthplace = optional(string)   # Not Required
+    })
+}
+```
+
+---
+
+## Version Constraints
+
+Pin version of **MODULE** or **PROVIDER** under a specific condition. This will prevent automatic update to newer versions in the future.
+
+```
+version = "<condition>"
+```
+
+- **Exact**: `version = "5.38.0"`
+- **Except**: `version = "!= 3.14.0"`
+- **Range**: `version = "> 2.1.0"` | `version = "< 5.1.0"` | `version = ">= 1.2.0, < 2.0.0"` (closed-range)
+- **Pessimistic (~>)**: `version = "~> 2.1.0"` — `2.1.1` and `2.1.2` are ok, but not `2.0.0` and `2.2.0` (only the last portion can increase)
+
+If Terraform does not have the acceptable versions, it will download the **newest** version as per the specified constraints. If no acceptable version can be downloaded, Terraform will not allow `plan` and `apply`.
