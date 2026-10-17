@@ -1,5 +1,5 @@
-chaundra-m-manjunath-h-hashicorp-terraform-associate-003-exam-guide/*.pdf
-chaundra-m-manjunath-h-hashicorp-terraform-associate-003-exam-guide/*.epub
+*.pdf
+*.epub
 
 .DS_Store
 .venv/
