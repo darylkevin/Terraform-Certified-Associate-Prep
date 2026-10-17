@@ -1,5 +1,7 @@
 *.pdf
 *.epub
+*.html
+links.txt
 
 .DS_Store
 .venv/
